@@ -1,0 +1,299 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=company.Name %></title>
+
+    <meta name="description" content="We provides mobile recharge or Software  Services, MLM Software for all mobile networks, data card, DTH and hotel & flight booking, Utility bill payment, travel API with integration. We are professional website design & custom web application, offshore software development company in India" />
+
+    <meta name="keywords" content="Mobile Recharge API,  Multi Mobile Recharge, Multi Recharge System, Mobile Recharge System, Travel API Services, Bus Booking Services, Flight Booking Services, Mobile Recharge Dealer, Mobile Recharge Distributor, Mobile Recharge Company, Online Mobile Recharge API, Multi Recharge API Provider, MLM Software Provider, DTH Recharge API, Multi Mobile Recharge API, Mobile Recharge API, Software Development Company, Website Designing Company, Utility service Provider, MLM Software Provider, AEPS API Provider, AEPS Services, Best IT Company, Online Recharge System, Mobile recharge System, airtel recharge, jio recharge, idea recharge, vodafone recharge, dish tv recharge, airtel dth recharge, tata sky recharge" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="app_js/alertifyjs/css/alertify.min.css" rel="stylesheet" />
+    <script src="app_js/alertifyjs/alertify.min.js"></script>
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=yes">
+
+    <!-- Web Fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400" rel="stylesheet" type="text/css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Exo:400,500,600,700,800" rel="stylesheet" type="text/css" />
+
+    <!-- Vendor CSS -->
+    <link href="assets/frontpage/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/frontpage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/frontpage/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/frontpage/vendor/animate/animate.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Theme CSS -->
+    <link href="assets/frontpage/css/theme.css" rel="stylesheet" type="text/css" />
+    <link href="assets/frontpage/css/theme-elements.css" rel="stylesheet" type="text/css" />
+    <link href="assets/frontpage/css/services.css" rel="stylesheet" type="text/css" />
+
+    <!-- Skin CSS -->
+    <link href="assets/frontpage/css/skin-corporate-8.css" rel="stylesheet" type="text/css" />
+
+    <!-- Slider Script & CSS -->
+    <link href="assets/frontpage/slider/engine2/style.css" rel="stylesheet" type="text/css" />
+    <script src="assets/frontpage/slider/engine2/jquery.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <header id="header" data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 164, 'stickySetTop': '-164px', 'stickyChangeLogo': false}">
+                <div class="header-body border-0">
+                    <div class="top-wrapper">
+                        <div class="container">
+                            <div class="row">
+                                <style>
+                                    h1 {
+                                        font-size: x-large !important;
+                                        line-height: unset !important;
+                                        margin: unset !important;
+                                    }
+                                </style>
+                                <div class="col-lg-5 col-md-6 col-sm-12 head-set-1">
+                                    <div class="guest">
+                                        <marquee>
+                                        <asp:Repeater runat="server" ID="rptnewData">
+                                            <ItemTemplate>
+                                              <span style="font-size:x-small !important">  <%# Eval("Description").ToString().Replace("font-size:14px","") %></span>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
+                                        </marquee>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 col-md-6 head-set-2">
+                                    <div class="top-header-add">
+                                        <div class="phone">
+                                            <img src="assets/frontpage/img/icon/phonelink-ring_transparent.gif" width="40px" height="33px"><span>Call : </span>+91 <%=company.Mobile %>
+                                        </div>
+                                        <div class="" id="divLogin" style="color:white !important">
+                                            <a href="member/Default.aspx" style="color:white !important"><i class="fa fa-lock" aria-hidden="true"></i><span><strong>Login</strong></span></a>
+                                        </div>
+                                        <%--<div class="" id="divLogin1" style="">
+                                            <a href="register.aspx" style="color:white !important"><i class="fa fa-lock" aria-hidden="true"></i><span><strong>Sign Up</strong></span></a>
+
+                                        </div>--%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-container container">
+                        <div class="header-row py-2">
+                            <div class="header-column justify-content-start w-50 order-md-1 d-md-flex">
+                                <div class="header-row">
+                                    <div class="header-logo">
+                                        <a href="index.aspx">
+                                            <img src='<%= "images/Company/"+company.Logo %>' alt="Logo" class="brand-image"
+                                                style="height: 192px; max-height: 70px;">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="header-column justify-content-start justify-content-md-center d-none d-md-flex order-1 order-md-2">
+                                <div class="header-row">
+                                    <ul class="header-extra-info">
+                                        <li class="m-0">
+                                            <div class="feature-box feature-box-style-2 align-items-center">
+                                                <div class="feature-box-icon">
+                                                    <img src="assets/frontpage/img/icon/mail.png" height="45px" width="45px" class="text-7 p-relative" style="top: -3px;">
+                                                </div>
+                                                <div class="feature-box-info">
+                                                    <p class="pb-0 font-weight-semibold line-height-5 text-2">
+                                                        <b><%=company.Email %></b><br>
+                                                        <b><%=company.AlternateEmail %></b>
+
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="header-column justify-content-end w-50 order-2 order-md-3">
+                                <div class="header-row">
+                                    <ul class="header-extra-info">
+                                        <li class="m-0">
+                                            <div class="feature-box reverse-allres feature-box-style-2 align-items-center">
+                                                <div class="feature-box-icon">
+                                                    <img src="assets/frontpage/img/icon/clock.png" height="50px" width="50px" class="text-7 p-relative" style="top: 1px;">
+                                                </div>
+                                                <div class="feature-box-info">
+                                                    <p class="pb-0 font-weight-semibold line-height-5 text-2">
+                                                        <b class="text-4 text-danger">Office Timing</b><br>
+                                                        <b>Mon-Sat : 10:00AM To 4:30PM</b>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="navbar navbar-expand-lg navbar-mainbg">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fas fa-bars text-white"></i>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto">
+                                <div class="hori-selector">
+                                    <div class="left"></div>
+                                    <div class="right"></div>
+                                </div>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="index.aspx"><i class="fas fa-home"></i>Home</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="About_us.aspx"><i class="fas fa-book"></i>About Us</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="Services.aspx"><i class="fas fa-cog"></i>Services</a>
+                                </li>
+
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="Master_Distributor.aspx"><i class="fas fa-chalkboard-teacher"></i>Master Distributor</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="Distributor.aspx"><i class="fas fa-users"></i>Distributor</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="Retailer.aspx"><i class="fas fa-user"></i>Retailer</a>
+                                </li>
+
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="Contact_us.aspx"><i class="fas fa-address-book"></i>Contact Us</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <footer id="footer">
+                <div class="container">
+                    <div class="footer-ribbon">
+                        <span>Get in Touch</span>
+                    </div>
+                    <div class="row py-2 my-4 pt-5">
+                        <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                            <h5 class="text-3 mb-3">About Us</h5>
+                            <p class="text-white">
+Payment Solution is a Banking, IT and Recharge services provider company and deals with IT market Requirements and custom software.
+
+We are the leading service provider in Thoubal, Manipur, India and providing Multi Recharge AEPS, Micro ATM,PMJAY ID,Bill Payment to our valuable customers.
+                            </p>
+
+
+                        </div>
+                        <div class="col-md-6 col-lg-2 mb-5 mb-lg-0">
+                            <h5 class="text-3 mb-3">Important Links</h5>
+                            <ul class="list-unstyled mb-0">
+                                <li class="media mb-1 pb-1">
+                                    <a href="index.aspx">Home
+                                    </a>
+                                </li>
+                                <li class="media mb-1 pb-1">
+                                    <a href="Termsandconditions.aspx">Terms and conditions
+                                    </a>
+                                </li>
+                                <li class="media mb-1 pb-1">
+                                    <a href="privacy-policy.aspx">Privacy policy</a>
+                                </li>
+                                <li class="media mb-1 pb-1">
+                                    <a href="Refund-return.aspx">Refund policy
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 col-lg-3 mb-5 mb-md-0">
+                            <h5 class="text-3 mb-3">Contact</h5>
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-1 pb-1">
+                                    <p class="text-3 text-color-light opacity-8 mb-1"><i class="fas fa-map-marker-alt"></i><%=company.Address %></p>
+
+                                </li>
+                                <li class="mb-1 pb-1">
+                                    <p class="text-3 text-color-light opacity-8 mb-1"><i class="fas fa-phone"></i><%=company.Mobile %>, <%=company.AlternateMobile %> </p>
+
+                                </li>
+                                <li class="mb-1 pb-1">
+                                    <p class="text-3 text-color-light opacity-8 mb-1">
+                                        <i class="fas fa-envelope"></i><%=company.Email %>,<br>
+                                        <%=company.AlternateEmail %><br>
+                                    </p>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="faddress">
+                                <div>
+  					<iframe 
+    					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.248284246669!2d75.72410181452116!3d26.891507583131374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db4c0176ddfff%3A0xe59d8b2bc00f118e!2sGanesh%20Vihar%2C%20Shyam%20Nagar%2C%20Jhotwara%2C%20Jaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1720610000000!5m2!1sen!2sin" 
+    					width="400" height="210" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+  					</iframe>
+				</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <div class="container py-2">
+                        <div class="row py-1">
+                            <div class="col-lg-4 d-flex align-items-center justify-content-center justify-content-lg-start mb-2 mb-lg-0">
+                                <a href="#" target="blank" class="logo pr-0 pr-lg-3">
+                                    <h6>Download App                                   
+                                        <img alt="Playstore Img" src="assets/frontpage/img/icon/playstore.png" class="opacity-10" height="35" style="margin-bottom: 5px;">
+                                    </h6>
+                                </a>
+                            </div>
+                            <div class="col-lg-4 d-flex align-items-center justify-content-center justify-content-lg-start mb-4 mb-lg-0">
+                                <h6 style="margin-left: 30px;">© 2024 <%=company.Name %> All Rights Reserved</h6>
+                            </div>
+                            <div class="col-lg-4 d-flex align-items-center justify-content-center justify-content-lg-end">
+                                <a href='<%=company.WebsiteURL %>' target="blank" class="logo pr-0 pr-lg-3">
+                                    <h6>Developed By
+                                   <%=company.Name %>
+                                    </h6>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </form>
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+    </script>
+
+    <!-- Vendor -->
+    <script src="assets/frontpage/vendor/jquery.appear/jquery.appear.min.js"></script>
+    <script src="assets/frontpage/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/frontpage/vendor/common/common.min.js"></script>
+    <script src="assets/frontpage/vendor/owl.carousel/owl.carousel.min.js"></script>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="assets/frontpage/js/theme.js"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="assets/frontpage/js/theme.init.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+﻿CREATE TABLE BankMasters (
+    Id BIGINT PRIMARY KEY IDENTITY(1,1),
+    BankName NVARCHAR(255) NOT NULL,
+    Type TINYINT NOT NULL,
+    BranchName NVARCHAR(255) NOT NULL,
+    IFSCCode NVARCHAR(20) NOT NULL,
+    AccountHolderName NVARCHAR(255) NOT NULL,
+    AccountNumber NVARCHAR(100) NOT NULL,
+    UPIHandle NVARCHAR(100) NOT NULL,
+    IsActive BIT NOT NULL DEFAULT 1,
+    CreatedBy BIGINT NOT NULL,
+    CreatedAt DATETIME NOT NULL,
+    UpdatedBy BIGINT NULL,
+    UpdatedAt DATETIME NULL
+);

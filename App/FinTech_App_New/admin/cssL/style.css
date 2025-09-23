@@ -1,0 +1,288 @@
+
+body{
+    padding: 0;
+    margin: 0;
+            background: url('../images/bg.png');
+            height: 100%;
+
+}
+section.mobile-app .top-box {
+    margin-bottom: 15px;
+    box-shadow: 0 5px 60px rgb(3 35 52 / 15%);
+    background: #f62216;
+    padding: 21px 0px;
+}
+section.mobile-app .header-img-sec{
+    text-align: center;
+}
+section.mobile-app .field-icon {
+  float: right;
+  margin-left: -25px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+}
+
+.grad4 {
+    background: rgba(174,170,211,1) !important;
+    background: -moz-linear-gradient(left, rgba(174,170,211,1) 0%, rgba(174,170,211,1) 47%, rgba(57,47,102,1) 84%, rgba(57,47,102,1) 100%) !important;
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(174,170,211,1)), color-stop(47%, rgba(174,170,211,1)), color-stop(84%, rgba(57,47,102,1)), color-stop(100%, rgba(57,47,102,1))) !important;
+    background: -webkit-linear-gradient(left, rgba(174,170,211,1) 0%, rgba(174,170,211,1) 47%, rgba(57,47,102,1) 84%, rgba(57,47,102,1) 100%) !important;
+    background: -o-linear-gradient(left, rgba(174,170,211,1) 0%, rgba(174,170,211,1) 47%, rgba(57,47,102,1) 84%, rgba(57,47,102,1) 100%) !important;
+    background: -ms-linear-gradient(left, rgba(174,170,211,1) 0%, rgba(174,170,211,1) 47%, rgba(57,47,102,1) 84%, rgba(57,47,102,1) 100%) !important;
+    background: linear-gradient(to right, rgba(174,170,211,1) 0%, rgba(174,170,211,1) 47%, rgba(57,47,102,1) 84%, rgba(57,47,102,1) 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aeaad3', endColorstr='#392f66', GradientType=1 ) !important;
+}
+.brandLogo3 {
+    font-family: ClanProMedium;
+    color: #696b6f !important;
+    font-size: 8px;
+    font-style: italic;
+    line-height: 0.4;
+    display: block;
+}
+.d-inline-flex {
+    display: -ms-inline-flexbox !important;
+    display: inline-flex !important;
+}
+.logoPattern {
+    /*background: #392F66;*/
+    box-sizing: border-box;
+    color: #636363;
+    height: 52px;
+    padding: 13px 36px;
+    position: relative;
+    width: 160px;
+}
+.logoPattern:after {
+    /*background: #392F66;*/
+    content: "";
+    height: 60px;
+    position: absolute;
+    right: -30px;
+    top: 0;
+    -webkit-transform: skew(
+140deg
+);
+    -moz-transform: skew(140deg);
+    -o-transform: skew(140deg);
+    border-radius: 5px 6px 5px 6px;
+    width: 75px;
+    z-index: -1;
+}
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    box-shadow: 1px 1px 3px rgb(0 0 0 / 10%);
+}
+.brandLogo1 {
+    font-family: ClanProMedium;
+    color: #696b6f !important;
+    font-size: 22px;
+    font-weight: bold;
+    font-style: italic;
+    display: block;
+}
+.brandLogo2 {
+    font-family: ClanProMedium;
+    color: #696b6f !important;
+    font-size: 16px;
+    font-weight: bold;
+    font-style: italic;
+    line-height: 0.4;
+    display: block;
+}
+.float-right {
+    float: right !important;
+}
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+section.mobile-app .form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: 26px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #495057;
+    font-size: 18px;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: 2em!important;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+
+section.mobile-app .box {
+    padding-bottom: -24px;
+    background: #cdcdcdb0;
+    padding: 15px 0px;
+    position: absolute;
+    bottom: 13px;
+    width: 100%;
+    z-index: -1;
+}
+section.mobile-app .box {
+    background: #eaeaea;
+    padding: 15px 0px;
+}
+section.mobile-app p {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+section.mobile-app .detals-box {
+    box-shadow: 0 5px 60px rgb(3 35 52 / 15%);
+    background: #fff;
+}
+section.mobile-app {
+    width: 100%;
+    padding: 0px 0px;
+    margin-top: 100px;
+    min-height: 100%;
+    /* text-align: center; */
+}
+
+
+/* 
+
+section.mobile-app:after{
+position: absolute;
+    content: '';
+        background: url('../images/bg.png');
+    left: 0;
+    top: 0;
+    width: 100%;
+    min-height: 100%;
+    z-index: -1;
+
+} */
+.cus_care_no {
+    text-align: center;
+    font-size: 18px;
+    color: #000;
+    margin-top: 30px;
+    background: rgb(0 0 0 / 8%);
+    padding: 7px 10px;
+}
+section.mobile-app .cus_care_no p {
+    margin: 0 0 10px;
+}
+.footer {
+    text-align: center;
+    background: #000;
+    padding: 10px 15px;
+    margin-top: 15px;
+    position: absolute;
+    z-index: 9999;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+.footerlinks ul {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.footerlinks li {
+    list-style: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 0 15px;
+    text-transform: uppercase;
+}
+.footerlinks li a {
+    color: #fff;
+    text-decoration: none;
+}
+section.mobile-app img {
+    margin-top: 15px;
+    max-width: 80%;
+}
+.heading {
+    color: grey;
+    font-weight: 400;
+    font-size: 17px;
+}
+
+section.mobile-app .login-part {
+    height: 100%;
+    background: #fff;
+    box-shadow: 0 15px 30px rgb(0 0 0 / 10%);
+    padding: 30px 22px 50px;
+    border-radius: 20px;
+}
+.cus_care_no b {
+    color: red;
+    font-size: 25px;
+    font-weight: 600;
+}
+section.mobile-app .title {
+    text-align: center;
+    font-size: 35px;
+    padding-bottom: 20px;
+    font-weight: 500;
+    font-weight: lighter;
+}
+span.forgot {
+    text-align: right;
+    float: right;
+}
+
+section.mobile-app .fa-fw {
+    /* background: #e80b0b; */
+    text-align: center;
+    padding: 12px;
+    bottom: 0;
+    top: -21px;
+    color: #000;
+    width: auto!important;
+    border-radius: 0px;
+}
+section.mobile-app .logo {
+    text-align: center;
+}
+section.mobile-app button.btn.btn-primary {
+    padding: 10px 0px;
+    border-radius: 50px;
+    margin-bottom: 10px;
+    width: 100%;
+    font-weight: 800;
+    font-size: 20px;
+}
+p.copyright {
+    margin-top: 1em;
+}
+
+
+
+@media only screen and (max-width:767px){
+    section.mobile-app p {
+    font-size: 12px;
+    font-weight: 600;
+}
+section.mobile-app .form-box {
+    padding: 0px 20px;
+    padding-top: 5px;
+}
+section.mobile-app a.btn.btn-primary {
+    padding: 10px 25px;
+    font-size: 18px;
+    border: inherit;
+}
+.playstore-part {
+    text-align: center;
+    margin-top: 10px;
+}
+section.mobile-app .login-part {
+    padding: 30px 1px 50px;
+}
+}

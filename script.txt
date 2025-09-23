@@ -1,0 +1,420 @@
+Database backup:
+
+use master databse
+
+RESTORE FILELISTONLY 
+FROM DISK = '%path_to_backup_file%';
+
+SELECT physical_name
+FROM sys.master_files
+WHERE database_id = DB_ID('master');
+
+RESTORE DATABASE %Database_name%
+FROM DISK = '%path_to_backup_file%'
+WITH 
+    MOVE 'WithoutBugg' TO 'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\%Database_name%.mdf',
+    MOVE 'WithoutBugg_log' TO 'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\%Database_name%.ldf',
+    REPLACE;
+	
+_________________________________________________________________________________________________
+Database Update:
+
+use %database%
+
+EMPLOYEE:
+
+DECLARE @Password NVARCHAR(100) = 'Pass@1234';
+DECLARE @Salt UNIQUEIDENTIFIER = NEWID();
+DECLARE @HashedPassword VARBINARY(64);
+
+SET @HashedPassword = HASHBYTES('SHA2_512', @Password + CONVERT(NVARCHAR(36), @Salt));
+
+UPDATE EMPLOYEE
+SET 
+    Email = 'newemail@example.com',
+    LoginID = 'newemail@example.com',
+    Age = 30,
+    Mobile = '2222222222',
+    Address = '123 Example Street, City, State',
+    AddDate = GETDATE(),
+    UpdateDate = NULL,
+    Latitude = NULL,
+    Longitude = NULL,
+    Salt = @Salt,
+    password = @HashedPassword
+WHERE ID = 1;
+
+
+Member:
+
+DECLARE @Password NVARCHAR(100) = 'Pass@1234';
+DECLARE @Salt UNIQUEIDENTIFIER = NEWID();
+DECLARE @HashedPassword VARBINARY(64);
+
+SET @HashedPassword = HASHBYTES('SHA2_512', @Password + CONVERT(NVARCHAR(36), @Salt));
+
+UPDATE Member
+SET 
+    Name = 'Example Name',
+    Email = 'newemail@example.com',
+    LoginID = 'newemail@example.com',
+    Mobile = '2222222222',
+    Address = '123 Example Street, City, State',
+    DOB = '1990-01-01',
+    ShopName = 'Example Shop Name',
+    CreatedDate = GETDATE(),
+    UpdatedDate = NULL,
+    Latitude = NULL,
+    Longitude = NULL,
+    Salt = @Salt,
+    Password = @HashedPassword
+WHERE ID = 1;
+
+
+_________________________________________________________________________________________________
+
+Database Cleanup:
+
+Partial:
+DELETE FROM dbo.Employee; (Only Admin will remain)
+DELETE FROM dbo.Member; (Only admin will remain)
+DELETE FROM dbo.Company; (Only one record will remain)
+
+Complete Clean:
+DELETE FROM dbo.CompanyBankDetails;
+DELETE FROM dbo.TBL_AEPSWALLETTRANSACTION;
+DELETE FROM dbo.TBL_EWALLETBALANCE;
+DELETE FROM dbo.TBL_EWALLETTRANSACTION;
+DELETE FROM dbo.tblMLM_AEPS2EWalletBalance;
+DELETE FROM dbo.Aadhar_History;
+DELETE FROM dbo.ActivityEmp;
+DELETE FROM dbo.AdminLoginHistory;
+DELETE FROM dbo.AEPS_History;
+DELETE FROM dbo.AEPS_WithdrwalRequest;
+DELETE FROM dbo.AEPSKYC;
+DELETE FROM dbo.AEPSOnBoardStatus;
+DELETE FROM dbo.asasasasas;
+DELETE FROM dbo.BeneficiaryDMT;
+DELETE FROM dbo.ComplainChat;
+DELETE FROM dbo.ComplainTicket;
+DELETE FROM dbo.CustomerDMT;
+DELETE FROM dbo.FundAdd_UPI_Virtaul_Transaction;
+DELETE FROM dbo.FundRequest;
+DELETE FROM dbo.LogData;
+DELETE FROM dbo.Manipur;
+DELETE FROM dbo.MATMHistory;
+DELETE FROM dbo.MATMRequestID;
+DELETE FROM dbo.MemberBankDetails;
+DELETE FROM dbo.MemberKYCDocuments;
+DELETE FROM dbo.MemberLoginHistory;
+DELETE FROM dbo.MemberUPI;
+DELETE FROM dbo.MoneyTransfer;
+DELETE FROM dbo.PROFITBALANCE;
+DELETE FROM dbo.tblRecharge_History;
+DELETE FROM dbo.UPITransfer;
+DELETE FROM dbo.VanHistory;
+
+_________________________________________________________________________________________________
+
+Operators:
+
+/****** Object:  Table [dbo].[Operator]    Script Date: 04-09-2025 03:21:04 PM ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Operator]') AND type in (N'U'))
+DROP TABLE [dbo].[Operator]
+GO
+
+/****** Object:  Table [dbo].[Operator]    Script Date: 04-09-2025 03:21:04 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Operator](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](100) NULL,
+	[ServiceID] [int] NULL,
+	[OperatorCode] [nvarchar](100) NULL,
+	[MinVal] [decimal](18, 2) NULL,
+	[MaxVal] [decimal](18, 2) NULL,
+	[IsActive] [bit] NULL,
+	[IsPending] [bit] NULL,
+	[AddDate] [datetime] NULL,
+	[Commission] [bit] NULL,
+	[IsOffLine] [bit] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Operator] ADD  DEFAULT ((1)) FOR [IsActive]
+GO
+
+ALTER TABLE [dbo].[Operator] ADD  DEFAULT ((0)) FOR [IsPending]
+GO
+
+ALTER TABLE [dbo].[Operator] ADD  DEFAULT (getdate()) FOR [AddDate]
+GO
+
+ALTER TABLE [dbo].[Operator] ADD  DEFAULT ((0)) FOR [Commission]
+GO
+
+ALTER TABLE [dbo].[Operator] ADD  DEFAULT ((0)) FOR [IsOffLine]
+GO
+
+
+INSERT INTO [base_database].[dbo].[Operator] (Name, ServiceID, OperatorCode, MinVal, MaxVal, IsActive, IsPending, AddDate, Commission, IsOffLine) VALUES
+
+-- ServiceID 1 - Mobile Recharge
+('Airtel', 1, 'AT', 1.00, 10000.00, 1, 0, '2025-09-04 15:05:34.383', 1, 0),
+('Airtel P2A', 1, 'APA', 1.00, 10000.00, 1, 0, '2025-09-04 15:05:34.383', 1, 0),
+('BSNL', 1, 'BS', 1.00, 10000.00, 1, 0, '2025-09-04 15:05:34.383', 1, 0),
+('BSNL Special', 1, 'BSS', 1.00, 10000.00, 1, 0, '2025-09-04 15:05:34.383', 1, 0),
+('Jio', 1, 'JO', 1.00, 10000.00, 1, 0, '2025-09-04 15:05:34.383', 1, 0),
+('Jio P2A', 1, 'JPA', 1.00, 10000.00, 1, 0, '2025-09-04 15:05:34.383', 1, 0),
+('VI', 1, 'VI', 1.00, 10000.00, 1, 0, '2025-09-04 15:05:34.383', 1, 0),
+
+-- ServiceID 2 - Postpaid
+('Airtel', 2, 'ATP', 1.00, 10000.00, 1, 0, '2025-09-04 15:14:20.957', 1, 0),
+('BSNL', 2, 'BPOS', 1.00, 10000.00, 1, 0, '2025-09-04 15:14:20.957', 1, 0),
+('Jio', 2, 'RGPOS', 1.00, 10000.00, 1, 0, '2025-09-04 15:14:20.957', 1, 0),
+('Vodafone Idea', 2, 'VIPOS', 1.00, 10000.00, 1, 0, '2025-09-04 15:14:20.957', 1, 0),
+('Wiwanet', 2, 'WIWN', 1.00, 10000.00, 1, 0, '2025-09-04 15:14:20.957', 1, 0),
+
+-- ServiceID 3 - DTH
+('Airtel Digital TV', 3, 'AD', 1.00, 10000.00, 1, 0, '2025-09-04 15:14:35.087', 1, 0),
+('Dish TV', 3, 'DT', 1.00, 10000.00, 1, 0, '2025-09-04 15:14:35.087', 1, 0),
+('Sun Direct', 3, 'SD', 1.00, 10000.00, 1, 0, '2025-09-04 15:14:35.087', 1, 0),
+('Tata Play', 3, 'TS', 1.00, 10000.00, 1, 0, '2025-09-04 15:14:35.087', 1, 0),
+('Videocon d2h', 3, 'VT', 1.00, 10000.00, 1, 0, '2025-09-04 15:14:35.087', 1, 0),
+
+-- ServiceID 4 - Electricity
+('Adani Electricity Mumbai Ltd.', 4, 'REE', 10.00, 490000.00, 0, 0, '2021-05-27 11:00:04.157', 1, 0),
+('Ajmer Vidyut Vitran Nigam - RAJASTHAN', 4, 'ARE', 10.00, 490000.00, 0, 0, '2021-05-27 11:00:21.330', 1, 0),
+('BESCOM - BENGALURU', 4, 'BBE', 10.00, 490000.00, 0, 0, '2021-05-27 11:00:48.747', 1, 0),
+('BESL - BHARATPUR', 4, 'BPE', 10.00, 490000.00, 0, 0, '2021-05-27 11:00:58.093', 1, 0),
+('BEST - MUMBAI', 4, 'BME', 10.00, 490000.00, 0, 0, '2021-05-27 11:01:09.000', 1, 0),
+('Bikaner Electricity Supply Limited (BKESL)', 4, 'BKE', 10.00, 490000.00, 0, 0, '2021-05-27 11:01:19.657', 1, 0),
+('BSES Rajdhani - DELHI', 4, 'BRE', 10.00, 490000.00, 0, 0, '2021-05-27 11:01:32.110', 1, 0),
+('BSES Yamuna - DELHI', 4, 'BYE', 10.00, 490000.00, 0, 0, '2021-05-27 11:01:52.970', 1, 0),
+('CESC - WEST BENGAL', 4, 'CWE', 10.00, 490000.00, 0, 0, '2021-05-27 11:02:47.373', 1, 0),
+('CESU Odhisa', 4, 'COE', 10.00, 490000.00, 0, 0, '2021-05-27 11:02:58.890', 1, 0),
+('Chamundeshwari Electricity Supply Corp Ltd (CESCOM)', 4, 'CHE', 10.00, 490000.00, 0, 0, '2021-05-27 11:03:08.140', 1, 0),
+('CSPDCL - CHHATTISGARH', 4, 'CCE', 10.00, 490000.00, 0, 0, '2021-05-27 11:03:17.707', 1, 0),
+('Department of Power Nagaland', 4, 'NPE', 10.00, 490000.00, 0, 0, '2021-05-27 11:03:40.920', 1, 0),
+('DGVCL - GUJARAT', 4, 'GDE', 10.00, 490000.00, 0, 0, '2021-05-27 11:03:51.093', 1, 0),
+('DHBVN - HARYANA', 4, 'HDE', 10.00, 490000.00, 0, 0, '2021-05-27 11:04:10.650', 1, 0),
+('Electricity Department Chandigarh', 4, 'CDE', 10.00, 490000.00, 0, 0, '2021-05-27 11:04:23.280', 1, 0),
+('Goa Electricity Department', 4, 'GOE', 10.00, 490000.00, 0, 0, '2021-05-27 11:04:32.997', 1, 0),
+('Government of Pudduchery Elcetricty Department', 4, 'PDE', 10.00, 490000.00, 0, 0, '2021-05-27 11:04:42.653', 1, 0),
+('Gulbarga Electricity Supply Company Limited(GESCOM)', 4, 'GLE', 10.00, 490000.00, 0, 0, '2021-05-27 11:04:52.983', 1, 0),
+('Himachal Pradesh Electricity', 4, 'HPE', 10.00, 490000.00, 0, 0, '2021-05-27 11:05:02.610', 1, 0),
+('Hubli Electricity Supply Company Ltd (HESCOM)', 4, 'HLE', 10.00, 490000.00, 0, 0, '2021-05-27 11:05:12.080', 1, 0),
+('Jaipur Vidyut Vitran Nigam', 4, 'JRE', 10.00, 490000.00, 0, 0, '2021-05-27 11:05:21.833', 1, 0),
+('Jodhpur Vidyut Vitran Nigam - RAJASTHAN', 4, 'DRE', 10.00, 490000.00, 0, 0, '2021-05-27 11:05:31.463', 1, 0),
+('Kanpur Electricity Supply Company Ltd', 4, 'KNE', 10.00, 490000.00, 0, 0, '2021-05-27 11:05:41.973', 1, 0),
+('Kerla State Electricity', 4, 'KSE', 10.00, 490000.00, 0, 0, '2021-05-27 11:05:52.753', 1, 0),
+('Kota Electricity Distribution Limited (KEDL)', 4, 'KEE', 10.00, 490000.00, 0, 0, '2021-05-27 11:06:02.427', 1, 0),
+('M.P. Madhya Kshetra Vidyut Vitaran - RURAL', 4, 'MAE', 10.00, 490000.00, 0, 0, '2021-05-27 11:06:13.963', 1, 0),
+('M.P. Madhya Kshetra Vidyut Vitaran - URBAN', 4, 'MBE', 10.00, 490000.00, 0, 0, '2021-05-27 11:06:24.603', 1, 0),
+('M.P. Poorv Kshetra Vidyut Vitaran - URBAN', 4, 'MCE', 10.00, 490000.00, 0, 0, '2021-05-27 11:06:35.770', 1, 0),
+('M.P. Poorv Kshetra Vidyut Vitaran – RURAL', 4, 'MEE', 10.00, 490000.00, 0, 0, '2021-05-27 11:06:45.820', 1, 0),
+('Madhya Kshetra Vitaran - MADHYA PRADESH', 4, 'MME', 10.00, 490000.00, 0, 0, '2021-05-27 11:06:55.163', 1, 0),
+('Mangalore Electricity (MESCOM)', 4, 'MGE', 10.00, 490000.00, 0, 0, '2021-05-27 11:07:08.337', 1, 0),
+('MP-Paschim Kshetra Vidyut Vitaran Co. Ltd.(Indore Rural)', 4, 'MPE', 10.00, 490000.00, 0, 0, '2021-05-27 11:07:18.870', 1, 0),
+('MP-Poorv Kshetra Vidyut Vitaran Co. Ltd.(Jabalpur)(NGB)', 4, 'MJE', 10.00, 490000.00, 0, 0, '2021-05-27 11:07:27.817', 1, 0),
+('MSEDC - MAHARASHTRA', 4, 'MDE', 10.00, 490000.00, 0, 0, '2021-05-27 11:07:37.750', 1, 0),
+('MDE Noida Power - NOIDA', 4, 'NUE', 10.00, 490000.00, 0, 0, '2021-05-27 11:07:48.090', 1, 0),
+('North Bihar Power Distribution Company Ltd', 4, 'NBE', 10.00, 490000.00, 0, 0, '2021-05-27 11:07:58.697', 1, 0),
+('Odisha Discoms - ODISHA', 4, 'DOE', 10.00, 490000.00, 0, 0, '2021-05-27 11:08:08.687', 1, 0),
+('PGVCL - GUJARAT', 4, 'GPE', 10.00, 490000.00, 0, 0, '2021-05-27 11:08:19.407', 1, 0),
+('Power And Electricity Mizoram', 4, 'MZE', 10.00, 490000.00, 0, 0, '2021-05-27 11:08:38.073', 1, 0),
+('Punjab State Power Corporation Ltd (PSPCL)', 4, 'PPE', 10.00, 490000.00, 0, 0, '2021-05-27 11:08:47.620', 1, 0),
+('Sikkim Power - URBAN', 4, 'SKE', 10.00, 490000.00, 0, 0, '2021-05-27 11:08:56.887', 1, 0),
+('Sikkim Power – RURAL', 4, 'SPE', 10.00, 490000.00, 0, 0, '2021-05-27 11:09:06.800', 1, 0),
+('South Bihar Power Distribution Company Ltd.', 4, 'SBE', 10.00, 490000.00, 0, 0, '2021-05-27 11:09:18.017', 1, 0),
+('SOUTHCO, Odisha', 4, 'SOE', 10.00, 490000.00, 0, 0, '2021-05-27 11:09:28.603', 1, 0),
+('Southern Power - ANDHRA PRADESH', 4, 'SAE', 10.00, 490000.00, 0, 0, '2021-05-27 11:09:37.780', 1, 0),
+('Tata Power (NDPL) - DELHI', 4, 'NDE', 10.00, 490000.00, 0, 0, '2021-05-27 11:09:47.710', 1, 0),
+('Tata Power – Mumbai', 4, 'TME', 10.00, 490000.00, 0, 0, '2021-05-27 11:09:57.260', 1, 0),
+('Torrent Power', 4, 'TPE', 10.00, 490000.00, 0, 0, '2021-05-27 11:10:07.433', 1, 0),
+('TP Ajmer Distribution Ltd (TPADL)', 4, 'AJE', 10.00, 490000.00, 0, 0, '2021-05-27 11:10:17.713', 1, 0),
+('UGVCL - GUJARAT', 4, 'GUE', 10.00, 490000.00, 0, 0, '2021-05-27 11:10:27.237', 1, 0),
+('Uttar Haryana Bijli Vitran Nigam', 4, 'HUE', 10.00, 490000.00, 0, 0, '2021-05-27 11:10:36.237', 1, 0),
+('Uttar Pradesh Power Corp Ltd (UPPCL) - RURAL', 4, 'UPR', 10.00, 490000.00, 0, 0, '2021-05-27 11:10:46.787', 1, 0),
+('Uttar Pradesh Power Corp Ltd (UPPCL) - URBAN [Paschimanchal Vidyut Vitran  Nigam Ltd]', 4, 'UPU', 10.00, 490000.00, 0, 0, '2021-05-27 11:10:58.787', 1, 0),
+('Uttarakhand Power Corporation Limited', 4, 'UKE', 10.00, 490000.00, 0, 0, '2021-05-27 11:11:08.800', 1, 0),
+('West Bengal State Electricity', 4, 'WWE', 10.00, 490000.00, 0, 0, '2021-05-27 11:11:20.147', 1, 0),
+('Manipur State Power Distribution Company Limited', 4, 'MSPDCL', NULL, NULL, 1, 1, '2022-08-10 11:21:19.693', 0, 0),
+('Secure Meters Mspdcl', 4, 'SMM', NULL, NULL, 1, 1, '2022-09-03 13:20:32.837', 0, 0),
+('Genus Meters Mspdcl', 4, 'GMM', NULL, NULL, 1, 1, '2022-09-03 13:20:51.060', 0, 0),
+('HPL Meters Mspdcl', 4, 'HMM', NULL, NULL, 1, 1, '2022-09-03 13:21:10.637', 0, 0),
+
+-- ServiceID 5 - Water & Other Services
+('Bangalore Water Supply', 5, 'BWW', 10.00, 490000.00, 0, 0, '2021-05-27 11:13:43.247', 1, 0),
+('Bhopal Municipal Corporation', 5, 'BMW', 10.00, 490000.00, 0, 0, '2021-05-27 11:13:54.670', 1, 0),
+('Delhi Jal Board', 5, 'DDW', 10.00, 490000.00, 0, 0, '2021-05-27 11:14:04.000', 1, 0),
+('Greater Warangal Municipal Corporation – Water', 5, 'GWW', 10.00, 490000.00, 0, 0, '2021-05-27 11:14:12.820', 1, 0),
+('Gwalior Municipal Corporation', 5, 'GMW', 10.00, 490000.00, 0, 0, '2021-05-27 11:14:23.407', 1, 0),
+('Hyderabad Metropolitan Water Supply and Sewerage Board', 5, 'HMW', 10.00, 490000.00, 0, 0, '2021-05-27 11:14:33.563', 1, 0),
+('Indore Municipal Corporation', 5, 'IMW', 10.00, 490000.00, 0, 0, '2021-05-27 11:14:42.837', 1, 0),
+('Jabalpur Municipal Corporation', 5, 'JMW', 10.00, 490000.00, 0, 0, '2021-05-27 11:14:52.200', 1, 0),
+('Municipal Corporation Chandigarh', 5, 'CCW', 10.00, 490000.00, 0, 0, '2021-05-27 11:15:02.403', 1, 0),
+('Municipal Corporation Jalandhar', 5, 'JLW', 10.00, 490000.00, 0, 0, '2021-05-27 11:15:10.937', 1, 0),
+('Municipal Corporation Ludhiana – Water', 5, 'LDW', 10.00, 490000.00, 0, 0, '2021-05-27 11:15:21.420', 1, 0),
+('Municipal Corporation of Faridabad - Water', 5, 'FRW', 10.00, 490000.00, 0, 0, '2021-05-27 11:15:33.500', 1, 0),
+('Municipal Corporation of Gurugram', 5, 'HGW', 10.00, 490000.00, 0, 0, '2021-05-27 11:15:47.267', 1, 0),
+('Mysuru City Corporation', 5, 'MCW', 10.00, 490000.00, 0, 0, '2021-05-27 11:15:56.923', 1, 0),
+('New Delhi Municipal Council (NDMC)', 5, 'NDW', 10.00, 490000.00, 0, 0, '2021-05-27 11:16:06.360', 1, 0),
+('Pune Municipal Corporation Water', 5, 'PMW', 10.00, 490000.00, 0, 0, '2021-05-27 11:16:17.080', 1, 0),
+('Ranchi Municipal Corporation', 5, 'RMW', 10.00, 490000.00, 0, 0, '2021-05-27 11:16:30.050', 1, 0),
+('Surat Municipal Corporation', 5, 'SMW', 10.00, 490000.00, 0, 0, '2021-05-27 11:16:41.410', 1, 0),
+('UIT Bhiwadi', 5, 'RBW', 10.00, 490000.00, 0, 0, '2021-05-27 11:16:50.163', 1, 0),
+('Ujjain Nagar Nigam – PHED', 5, 'UNW', 10.00, 490000.00, 0, 0, '2021-05-27 11:17:00.100', 1, 0),
+('Uttarakhand Jal Sansthan', 5, 'UUW', 10.00, 490000.00, 0, 0, '2021-05-27 11:17:10.900', 1, 0),
+('IRM Energy Private Limited', 5, 'IRG', 10.00, 490000.00, 0, 0, '2021-05-27 11:26:11.660', 1, 0),
+('Chola Insurance', 5, 'CLI', 10.00, 490000.00, 1, 0, '2021-05-27 11:30:23.140', 1, 0),
+('Indian Highways Management Company Ltd – Indusind FASTag', 5, 'IHT', 10.00, 490000.00, 1, 1, '2021-05-27 11:45:59.260', 1, 0),
+
+-- ServiceID 6 - Gas
+('Aavantika Gas Ltd', 6, 'AGG', 10.00, 490000.00, 0, 0, '2021-05-27 11:22:08.710', 1, 0),
+('Adani Gas', 6, 'ADG', 10.00, 490000.00, 0, 0, '2021-05-27 11:22:18.303', 1, 0),
+('Bhagyanagar Gas Limited', 6, 'BGG', 10.00, 490000.00, 0, 0, '2021-05-27 11:22:27.540', 1, 0),
+('Central U.P. Gas Limited', 6, 'CUG', 10.00, 490000.00, 1, 0, '2021-05-27 11:22:38.820', 1, 0),
+('Charotar Gas Sahakari Mandali Ltd', 6, 'CGG', 10.00, 490000.00, 0, 0, '2021-05-27 11:22:48.263', 1, 0),
+('Gail Gas Limited', 6, 'GGG', 10.00, 490000.00, 0, 0, '2021-05-27 11:22:58.843', 1, 0),
+('Green Gas Limited(GGL)', 6, 'GRG', 10.00, 490000.00, 0, 0, '2021-05-27 11:23:20.483', 1, 0),
+('Gujarat Gas', 6, 'GJG', 10.00, 490000.00, 0, 0, '2021-05-27 11:23:32.517', 1, 0),
+('Haryana City Gas', 6, 'HCG', 10.00, 490000.00, 0, 0, '2021-05-27 11:23:44.593', 1, 0),
+('Indian Oil-Adani Gas Private Limited', 6, 'IOG', 10.00, 490000.00, 0, 0, '2021-05-27 11:23:54.533', 1, 0),
+('Indraprastha Gas', 6, 'IPG', 10.00, 490000.00, 0, 0, '2021-05-27 11:26:01.787', 1, 0),
+('Mahanagar Gas', 6, 'MMG', 10.00, 490000.00, 0, 0, '2021-05-27 11:26:22.700', 1, 0),
+('Maharashtra Natural Gas Limited', 6, 'MNG', 10.00, 490000.00, 0, 0, '2021-05-27 11:26:34.530', 1, 0),
+('Sabarmati Gas Limited (SGL)', 6, 'SGG', 10.00, 490000.00, 0, 0, '2021-05-27 11:26:45.233', 1, 0),
+('Torrent Gas Moradabad Limited (Siti Energy Limited)', 6, 'TMG', 10.00, 490000.00, 0, 0, '2021-05-27 11:26:54.817', 1, 0),
+('Unique Central Piped Gases Pvt Ltd (UCPGPL)', 6, 'UCG', 10.00, 490000.00, 0, 0, '2021-05-27 11:27:09.837', 1, 0),
+('Vadodara Gas Limited', 6, 'VGG', 10.00, 490000.00, 0, 0, '2021-05-27 11:27:19.180', 1, 0),
+
+-- ServiceID 7 - LPG
+('Bharat Petroleum Corporation Limited (BPCL)', 7, 'BPL', NULL, NULL, 1, 0, '2022-01-21 12:26:44.227', 0, 0),
+('Indane Gas (Indian Oil)', 7, 'IGL', NULL, NULL, 1, 0, '2022-01-21 12:26:57.443', 0, 0),
+
+-- ServiceID 8 - Insurance & Loans
+('Aegon Life Insurance', 8, 'AGI', 10.00, 490000.00, 1, 0, '2021-05-27 11:28:55.320', 1, 0),
+('Aviva Life Insurance', 8, 'ALI', 10.00, 490000.00, 1, 0, '2021-05-27 11:29:23.247', 1, 0),
+('Bajaj Allianz Life Insurance', 8, 'BLI', 10.00, 490000.00, 1, 0, '2021-05-27 11:29:33.777', 1, 0),
+('Bharti Axa Life Insurance', 8, 'BAI', 10.00, 490000.00, 1, 0, '2021-05-27 11:29:44.607', 1, 0),
+('Birla Sun Life Insurance', 8, 'BSI', 10.00, 490000.00, 1, 0, '2021-05-27 11:29:58.653', 1, 0),
+('Canara HSBC Oriental Bank of Commerce Life Insurance', 8, 'CHI', 10.00, 490000.00, 1, 0, '2021-05-27 11:30:11.970', 1, 0),
+('Clix', 8, 'CLZ', 10.00, 490000.00, 1, 0, '2021-05-27 11:37:06.867', 1, 0),
+('Indraprastha Gas', 8, 'IPG', 10.00, 490000.00, 1, 0, '2021-05-27 11:26:01.787', 1, 0),
+('ICICI Prudential Life Insurance', 8, 'IPI', 10.00, 490000.00, 1, 0, '2021-05-27 11:31:27.400', 1, 0),
+('IDBI federal Life Insurance', 8, 'IDI', 10.00, 490000.00, 1, 0, '2021-05-27 11:31:39.167', 1, 0),
+('INDIA FIRST Life Insurance', 8, 'IFI', 10.00, 490000.00, 1, 0, '2021-05-27 11:31:53.980', 1, 0),
+('Max Life Insurance', 8, 'MLI', 10.00, 490000.00, 1, 0, '2021-05-27 11:32:32.943', 1, 0),
+('PNB Metlife', 8, 'PMI', 10.00, 490000.00, 1, 0, '2021-05-27 11:32:44.383', 1, 0),
+('SBI Life Insurance', 8, 'SLI', 10.00, 490000.00, 1, 0, '2021-05-27 11:32:54.540', 1, 0),
+('SBIG', 8, 'SBI', 10.00, 490000.00, 1, 0, '2021-05-27 11:33:04.417', 1, 0),
+('Tata AIA Life Insurance', 8, 'TAI', 10.00, 490000.00, 1, 0, '2021-05-27 11:33:14.040', 1, 0),
+('Life Insurance Corporation', 8, 'LIC', 10.00, 490000.00, 1, 0, '2021-05-27 11:33:24.417', 1, 0),
+
+('Airtel', 10, 'ATL', 1.00, 10000.00, 1, 0, '2021-05-27 10:55:41.650', 1, 0),
+('BSNL - Individual', 10, 'BGL', 1.00, 10000.00, 1, 0, '2021-05-27 10:55:59.360', 1, 0),
+('Bsnl - Corporate', 10, 'BCL', 1.00, 10000.00, 1, 0, '2021-05-27 10:56:19.130', 1, 0),
+('AAVAS FINANCIERS LIMITED', 11, 'AFZ', 10.00, 490000.00, 1, 0, '2021-05-27 11:35:46.113', 1, 0),
+('Aditya Birla Finance Ltd', 11, 'ABZ', 10.00, 490000.00, 1, 0, '2021-05-27 11:35:55.990', 1, 0),
+('Avail', 11, 'AVZ', 10.00, 490000.00, 0, 0, '2021-05-27 11:36:05.723', 1, 0),
+
+('Bajaj Auto Finance Ltd', 11, 'BAZ', 10.00, 490000.00, 1, 0, '2021-05-27 11:36:15.287', 1, 0),
+('Bajaj Finserv', 11, 'BFZ', 10.00, 490000.00, 1, 0, '2021-05-27 11:36:26.100', 1, 0),
+('Capri Global Capital Limited', 11, 'CGZ', 10.00, 490000.00, 0, 0, '2021-05-27 11:36:52.283', 1, 0),
+('DMI Finance', 11, 'DMZ', 10.00, 490000.00, 1, 0, '2021-05-27 11:37:15.753', 1, 0),
+('Ess Kay Fincorp Limited (Sk Finance)', 11, 'EKZ', 10.00, 490000.00, 1, 0, '2021-05-27 11:37:25.770', 1, 0),
+('Faircent', 11, 'FAZ', 10.00, 490000.00, 1, 0, '2021-05-27 11:37:37.067', 1, 0),
+('Flexsalary', 11, 'FLZ', 10.00, 490000.00, 0, 0, '2021-05-27 11:37:50.163', 1, 0),
+('Hero FinCorp Ltd', 11, 'HFZ', 10.00, 490000.00, 1, 0, '2021-05-27 11:37:59.713', 1, 0),
+('i2iFunding', 11, 'ITZ', 10.00, 490000.00, 0, 0, '2021-05-27 11:38:10.200', 1, 0),
+('Idfc First Bank', 11, 'IDZ', 10.00, 490000.00, 1, 0, '2021-05-27 11:38:20.520', 1, 0),
+('Indiabulls Consumer Finance Limited', 11, 'ICZ', 10.00, 490000.00, 1, 0, '2021-05-27 11:38:32.080', 1, 0),
+('Indiabulls Housing Finance Limited', 11, 'IHZ', 10.00, 490000.00, 0, 1, '2021-05-27 11:38:44.253', 1, 0),
+('L and T Financial Services', 11, 'LNZ', 10.00, 490000.00, 0, 1, '2021-05-27 11:39:12.947', 1, 0),
+('L and T Housing Finance', 11, 'LTZ', 10.00, 490000.00, 0, 1, '2021-05-27 11:39:26.460', 1, 0),
+('Loksuvidha', 11, 'LKZ', 10.00, 490000.00, 0, 1, '2021-05-27 11:39:37.883', 1, 0),
+('Manappuram Finance Limited-Vehicle Loan', 11, 'MFZ', 10.00, 490000.00, 0, 1, '2021-05-27 11:39:47.883', 1, 0),
+('Motilal Oswal Home Finance', 11, 'MOZ', 10.00, 490000.00, 0, 1, '2021-05-27 11:40:00.313', 1, 0),
+('Paisa Dukan-Borrower EMI', 11, 'PDZ', 10.00, 490000.00, 0, 1, '2021-05-27 11:40:11.163', 1, 0),
+('Snapmint', 11, 'SNZ', 10.00, 490000.00, 0, 1, '2021-05-27 11:40:20.150', 1, 0),
+('Tata Capital Financial Services Limited', 11, 'TCZ', 10.00, 490000.00, 1, 1, '2021-05-27 11:40:31.117', 1, 0),
+('Varthana', 11, 'VRZ', 10.00, 490000.00, 0, 1, '2021-05-27 11:40:47.320', 1, 0),
+
+('ACT BroadBand', 38, 'ACB', 10.00, 490000.00, 1, 0, '2021-05-27 11:43:20.560', 1, 0),
+('Airtel Broadband', 38, 'ARB', 10.00, 490000.00, 1, 0, '2021-05-27 11:43:38.563', 1, 0),
+('Hathway Broadband', 38, 'HWB', 10.00, 490000.00, 1, 0, '2021-05-27 11:43:47.663', 1, 0),
+('Nextra Broadband', 38, 'NXB', 10.00, 490000.00, 1, 0, '2021-05-27 11:43:57.163', 1, 0),
+('SpectraNet Broadband', 38, 'SNB', 10.00, 490000.00, 1, 0, '2021-05-27 11:44:05.590', 1, 0),
+('Tikona', 38, 'TDB', 10.00, 490000.00, 1, 0, '2021-05-27 11:44:15.147', 1, 0),
+('TTN Broadband', 38, 'TTB', 10.00, 490000.00, 1, 0, '2021-05-27 11:44:25.727', 1, 0);
+
+
+_________________________________________________________________________________________________
+
+INSERT INTO OperatorMasters (Name, Code, Type, Commission, IsActive)
+VALUES
+('Airtel Mobile', 'AMOB', 1, 2.10, 1),
+('BSNL Mobile', 'BSNLM', 1, 5.00, 1),
+('BSNL Special Mobile', 'BSNLS', 1, 5.00, 1),
+('VI Mobile', 'VIM', 1, 4.00, 1),
+('Airtel P2A Mobile (NON GST)', 'AP2A', 1, 2.50, 1),
+('Jio Mobile', 'JIO', 1, 0.60, 1),
+('Jio P2A Mobile (NON GST)', 'JIOP2A', 1, 0.80, 1),
+('Airtel PostPaid', 'APP', 2, 0.30, 1),
+('BSNL PostPaid', 'BSP', 2, 0.30, 1),
+('Jio PostPaid', 'JIOP', 2, 0.30, 1),
+('Vodafone Idea PostPaid', 'VIP', 2, 0.30, 1),
+('Wiwanet PostPaid', 'WNP', 2, 0.00, 1),
+('Airtel Digital TV', 'ADTV', 3, 4.20, 1),
+('Dish TV', 'DTV', 3, 4.20, 1),
+('Sun Direct', 'SDTV', 3, 3.50, 1),
+('Tata Play', 'TPLAY', 3, 4.20, 1),
+('Videocon d2h', 'VD2H', 3, 4.20, 1);
+
+
+_________________________________________________________________________________________________
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE VIEW [dbo].[VIEW_MEMBERBALANCE_WITH_HOLD]
+AS
+SELECT 
+    mm.Msrno,
+    mm.LoginID,
+    mm.Name,
+    mm.Mobile,
+    mm.Email,
+    mm.Address,
+    mm.RoleID,
+    mm.ParentID,
+
+    ew.Balance AS WalletBalance,
+    aew.Balance AS AEPSBalance,
+    pew.Balance AS ProfitBalance,
+
+    mm.HoldAmt AS HoldBalance,
+
+    -- Usable balances after deducting HoldAmt
+    (ew.Balance - ISNULL(mm.HoldAmt,0)) AS UsableBalance,
+    (aew.Balance - ISNULL(mm.HoldAmt,0)) AS UsableAEPSBalance
+FROM dbo.Member mm
+INNER JOIN dbo.TBL_EWALLETBALANCE ew 
+    ON ew.Msrno = mm.Msrno
+INNER JOIN dbo.tblMLM_AEPS2EWalletBalance aew 
+    ON aew.Msrno = mm.Msrno
+INNER JOIN dbo.PROFITBalance pew 
+    ON pew.Msrno = mm.Msrno;
+GO

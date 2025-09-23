@@ -1,0 +1,374 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="Admin_MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Retailer Registration</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <meta name="description" content="Login Area">
+    <meta name="author" content="">
+
+
+    <!-- ==== Favicons ==== -->
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+
+    <!-- ==== Google Font ==== -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900%7CMontserrat:700' rel='stylesheet' type='text/css'>
+
+    <!-- ==== Font Awesome ==== -->
+    <link href="../app_css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- ==== Alertify ==== -->
+    <link href="../app_js/alertifyjs/css/alertify.min.css" rel="stylesheet" />
+
+    <!-- ==== Bootstrap ==== -->
+    <link href="../app_css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- ==== jQuery UI ==== -->
+    <link href="../app_css/jquery-ui.min.css" rel="stylesheet">
+
+    <!-- ==== Animate CSS Library ==== -->
+    <link href="../app_css/animate.min.css" rel="stylesheet">
+
+    <!-- ==== Owl Carousel Plugin ==== -->
+    <link href="../app_css/owl.carousel.css" rel="stylesheet">
+
+    <!-- ==== Magnific Popup Plugin ==== -->
+    <link href="../app_css/magnific-popup.css" rel="stylesheet" type='text/css'>
+
+    <!-- ==== FakeLoader Plugin ==== -->
+    <link href="../app_css/fakeLoader.css" rel="stylesheet" type='text/css'>
+
+    <!-- ==== Main Stylesheet ==== -->
+    <link href="../app_js/style.css" rel="stylesheet">
+
+    <!-- ==== Responsive Stylesheet ==== -->
+    <link href="../app_css/responsive-style.css" rel="stylesheet">
+
+    <!-- ==== Theme Color Stylesheet ==== -->
+    <link href="https://rcpanel.com/demo/app_css/colors/theme-color-1.css" rel="stylesheet" id="changeColorScheme">
+
+    <!-- ==== Custom Stylesheet ==== -->
+    <link href="https://rcpanel.com/demo/app_css/custom.css" rel="stylesheet">
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <!-- Secondary Menu Start -->
+        <div id="secondaryMenu-sticky-wrapper" class="sticky-wrapper" style="height: 91px;">
+            <nav id="secondaryMenu" class="navbar" data-sticky="true" style="">
+                <div class="container">
+                    <div class="navbar-header">
+                        <!-- Logo Start -->
+                        <a href="" class="navbar-brand">
+                            <img src="./images/logo.png" alt="" width="auto" height="55">
+                        </a>
+                        <!-- Logo End -->
+                    </div>
+
+                    <!-- Off-Canvas Menu Toggle Button Start -->
+                    <button class="btn menu-toggle-btn">
+                        <i class="fa fa-navicon"></i>Menu
+                    </button>
+                    <!-- Off-Canvas Menu Toggle Button End -->
+
+                    <!-- Secondary Menu Links Start -->
+                    <div id="secondaryNavbar" class="navbar-right reset-padding hidden-sm hidden-xs">
+                        <ul class="secondary-menu-links nav navbar-nav">
+                            <li><a href="https://rcpanel.com/demo/site_admin">Dashboard</a></li>
+
+
+
+
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customers<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" data-toggle="modal" data-target="#register">Register</a></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#manage">Manage</a></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#add_bal">Balance Transfer</a></li>
+
+                                </ul>
+                            </li>
+
+
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Setting<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="https://rcpanel.com/demo/upload">Change Logo</a></li>
+                                    <li><a href="https://rcpanel.com/demo/update_contact">Update Contact</a></li>
+                                    <li><a href="https://rcpanel.com/demo/company">Switch API</a></li>
+                                    <li><a href="https://rcpanel.com/demo/api">API Setting</a></li>
+                                    <li><a href="https://rcpanel.com/demo/set_commission">Set Commission</a></li>
+                                    <li><a href="https://rcpanel.com/demo/bank">Add Bank Name</a></li>
+                                    <li><a href="https://rcpanel.com/demo/admin_bank_details">Add Bank Details</a></li>
+                                    <li><a href="https://rcpanel.com/demo/retailer_type">Business Type</a></li>
+                                    <li><a href="https://rcpanel.com/demo/state">Edit State</a></li>
+
+
+                                </ul>
+                            </li>
+
+
+
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Report<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="https://rcpanel.com/demo/list_recharge_pending">Pending Recharge</a></li>
+                                    <li><a href="https://rcpanel.com/demo/list_recharge">Recharge history</a></li>
+                                    <li><a href="https://rcpanel.com/demo/check_transaction">Check Transaction</a></li>
+                                    <li><a href="https://rcpanel.com/demo/account_report">Account Report</a></li>
+                                    <li><a href="https://rcpanel.com/demo/masterdistributor_transaction_reoprt">Master Distributor Report</a></li>
+                                    <li><a href="https://rcpanel.com/demo/distributor_transaction_reoprt">Disributor Report</a></li>
+                                    <li><a href="https://rcpanel.com/demo/agent_report">Retailer Report</a></li>
+
+
+                                </ul>
+                            </li>
+
+
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <span class="caret"></span></a>
+
+                                <ul class="dropdown-menu">
+                                    <li><a href="https://rcpanel.com/demo/change_password">Change Password</a></li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Support<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="https://rcpanel.com/demo/list_complain">Support Ticket</a></li>
+                                    <li><a href="https://rcpanel.com/demo/alerts">Set Alert</a></li>
+
+                                </ul>
+                            </li>
+
+                            <li><a href="https://rcpanel.com/demo/logout">log Out</a></li>
+
+                        </ul>
+                    </div>
+                    <!-- Secondary Menu Links End -->
+                </div>
+            </nav>
+        </div>
+        <!-- Secondary Menu End -->
+        <div id="pageTitle" class="bg--overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="section-title">
+                            <h2>Hi, Admin</h2>
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="breadcrumb">
+                            <li><span>API Balance:</span></li>
+
+                            <li class="active">Rs 11232.22
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="off-canvas-menu">
+            <!-- Off-Canvas Menu Close Button Start -->
+            <button type="button" class="off-canvas-menu--close-btn"><i class="fa fa-close"></i></button>
+            <!-- Off-Canvas Menu Close Button End -->
+
+            <!-- Off-Canvas Menu Logo Start -->
+            <div class="off-canvas-menu-logo">
+                <a href="">
+                    <img src="images/logo.png" alt="" class="img-responsive center-block">
+                </a>
+            </div>
+            <!-- Off-Canvas Menu Logo End -->
+
+            <!-- Off-Canvas Menu Links Start -->
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href=""><i class="fa fa-fw fa-home"></i>Home</a></li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-fw fa-user"></i>Customers <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+
+                        <li><a href="#" data-toggle="modal" data-target="#register"><i class="fa fa-fw fa-users"></i>Register</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#manage"><i class="fa fa-fw fa-users"></i>Manage</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#add_bal"><i class="fa fa-fw fa-users"></i>Balance Transfer</a></li>
+
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-fw fa-cog"></i>Settings <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+
+
+                        <li><a href="https://rcpanel.com/demo/company"><i class="fa fa-fw fa-check"></i>Switch API</a></li>
+                        <li><a href="https://rcpanel.com/demo/upload"><i class="fa fa-fw fa-check"></i>Change Logo</a></li>
+                        <li><a href="https://rcpanel.com/demo/update_contact"><i class="fa fa-fw fa-check"></i>Update Contact</a></li>
+                        <li><a href="https://rcpanel.com/demo/api"><i class="fa fa-fw fa-check"></i>API Setting</a></li>
+                        <li><a href="https://rcpanel.com/demo/set_commission"><i class="fa fa-fw fa-check"></i>Set Commission</a></li>
+                        <li><a href="https://rcpanel.com/demo/bank"><i class="fa fa-fw fa-check"></i>Add Bank Name</a></li>
+                        <li><a href="https://rcpanel.com/demo/admin_bank_details"><i class="fa fa-fw fa-check"></i>Add Bank Details</a></li>
+                        <li><a href="https://rcpanel.com/demo/retailer_type"><i class="fa fa-fw fa-check"></i>Business Type</a></li>
+                        <li><a href="https://rcpanel.com/demo/state"><i class="fa fa-fw fa-check"></i>Edit State</a></li>
+
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-fw fa-bar-chart"></i>Report <span class="caret"></span></a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="https://rcpanel.com/demo/list_recharge_pending"><i class="fa fa-fw fa-check"></i>Pending Recharge</a></li>
+                        <li><a href="https://rcpanel.com/demo/list_recharge"><i class="fa fa-fw fa-check"></i>Recharge history</a></li>
+                        <li><a href="https://rcpanel.com/demo/check_transaction"><i class="fa fa-fw fa-check"></i>Check Transaction</a></li>
+                        <li><a href="https://rcpanel.com/demo/account_report"><i class="fa fa-fw fa-check"></i>Account Report</a></li>
+                        <li><a href="https://rcpanel.com/demo/masterdistributor_transaction_reoprt"><i class="fa fa-fw fa-check"></i>MD  Report</a></li>
+                        <li><a href="https://rcpanel.com/demo/distributor_transaction_reoprt"><i class="fa fa-fw fa-check"></i>Disributor Report</a></li>
+                        <li><a href="https://rcpanel.com/demo/agent_report"><i class="fa fa-fw fa-check"></i>Retailer Report</a></li>
+
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-fw fa-inr"></i>Support <span class="caret"></span></a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="https://rcpanel.com/demo/list_complain"><i class="fa fa-fw fa-check"></i>Support Ticket</a></li>
+                        <li><a href="https://rcpanel.com/demo/alerts"><i class="fa fa-fw fa-check"></i>Set Alert</a></li>
+                        <li><a href="https://rcpanel.com/demo/list_payment_request"><i class="fa fa-fw fa-check"></i>Process Payment</a></li>
+
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-fw fa-support"></i>My Account <span class="caret"></span></a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="https://rcpanel.com/demo/change_password"><i class="fa fa-fw fa-lock"></i>Change Password</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Off-Canvas Menu Links End -->
+
+            <a href="https://rcpanel.com/demo/logout" class="btn btn-default login-button"><i class="fa fa-user"></i>Log Out</a>
+        </div>
+        <div class="off-canvas-menu-overlay"></div>
+        <br />
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+
+    </form>
+    <!-- ==== jQuery Library ==== -->
+    <script src="../app_js/jquery-3.1.0.min.js"></script>
+
+    <!-- ==== jQuery UI ==== -->
+    <script src="../app_js/jquery-ui.min.js"></script>
+
+    <!-- ==== jQuery UI Touch Punch Plugin ==== -->
+    <script src="../app_js/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- ==== Bootstrap ==== -->
+    <script src="../app_js/bootstrap.min.js"></script>
+
+    <!-- ==== FakeLoader Plugin ==== -->
+    <script src="../app_js/fakeLoader.min.js"></script>
+
+    <!-- ==== StickyJS Plugin ==== -->
+    <script src="../app_js/jquery.sticky.js"></script>
+
+    <!-- ==== Owl Carousel Plugin ==== -->
+    <script src="../app_js/owl.carousel.min.js"></script>
+
+    <!-- ==== jQuery Tubuler Plugin ==== -->
+    <script src="../app_js/jquery.tubular.1.0.js"></script>
+
+    <!-- ==== Magnific Popup Plugin ==== -->
+    <script src="../app_js/jquery.magnific-popup.min.js"></script>
+
+    <!-- ==== jQuery Validation Plugin ==== -->
+    <script src="../demo/app_js/jquery.validate.min.js"></script>
+
+    <!-- ==== Animate Scroll Plugin ==== -->
+    <script src="../app_js/animatescroll.min.js"></script>
+
+    <!-- ==== jQuery Waypoints Plugin ==== -->
+    <script src="../app_js/jquery.waypoints.min.js"></script>
+
+    <!-- ==== jQuery CounterUp Plugin ==== -->
+    <script src="../app_js/jquery.counterup.min.js"></script>
+
+    <!-- ==== jQuery CountDown Plugin ==== -->
+    <script src="../app_js/jquery.countdown.min.js"></script>
+
+    <!-- ==== alertify ==== -->
+    <script src="../app_js/alertifyjs/alertify.min.js"></script>
+
+    <!-- ==== RetinaJS ==== -->
+    <script src="../app_js/retina.min.js"></script>
+
+    <!-- ==== Main JavaScript ==== -->
+    <script src="../app_js/main.js"></script>
+    <div id="copyright">
+        <div class="container">
+            <!-- Copyright Text Start -->
+            <p class="left">Copyright 2020 &copy; <a href="">Your Company Name</a>. All Rights Reserved.</p>
+            <!-- Copyright Text End -->
+
+        </div>
+    </div>
+    <div class="modal fade in" id="register" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">Please Select Customer Type</h4>
+                </div>
+                <div class="modal-body">
+
+
+
+                    <div class="form-group">
+                        <select class="form-control" onchange="this.options[this.selectedIndex].value &amp;&amp; (window.location = this.options[this.selectedIndex].value);">
+                            <option value="">Select...</option>
+                            <option value="https://rcpanel.com/demo/admin_md_registration">Master Distributor</option>
+                            <option value="https://rcpanel.com/demo/admin_d_registration">Distributor</option>
+                            <option value="https://rcpanel.com/demo/admin_agent_registration">Retailer</option>
+                            <option value="https://rcpanel.com/demo/reseller_registration">Reseller</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

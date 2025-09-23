@@ -1,0 +1,16 @@
+CREATE TABLE UserBanks (
+    Id BIGINT PRIMARY KEY IDENTITY(1,1),
+    UserId BIGINT NOT NULL,
+    BankName NVARCHAR(200) NOT NULL,
+    BranchName NVARCHAR(200) NOT NULL,
+    IFSCCode NVARCHAR(20) NOT NULL,
+    AccountHolderName NVARCHAR(200) NOT NULL,
+    AccountNumber NVARCHAR(50) NOT NULL,
+    UPIHandle NVARCHAR(100) NOT NULL,
+    IsActive BIT NOT NULL,
+    CreatedAt DATETIME NOT NULL,
+    UpdatedAt DATETIME NULL,
+    CreatedBy NVARCHAR(100) NULL,
+    UpdatedBy NVARCHAR(100) NULL,
+    FOREIGN KEY (UserId) REFERENCES UserMasters(Id)
+);

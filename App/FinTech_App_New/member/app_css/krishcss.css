@@ -1,0 +1,385 @@
+﻿/*krishdesigner.tk*/
+body {
+}
+.nav-right-krish ul li{border-right:1px solid #821300;}
+.nav-right-krish ul li a{font-size: 12px;padding: 5px 16px;}
+.nav-right-krish ul li a img{text-align:center;margin:0 auto;display: block;}
+.nav-right-krish ul li a p{margin-bottom:0px;text-transform: uppercase;font-weight: 600;font-size: 11px;}
+.krish-side-menu li a{border-bottom: 1px solid #831400;color: #fff;position: relative;font-size: 12px;font-weight: 400;text-transform: uppercase;}
+.krish-side-menu > li > a > i {background-image: url(../img/sprite1.png);width: 40px;height: 22px;float: left;}
+.krish-side-menu li a i.home{background-position: -3px -10px;}
+.sidebar-menu > li > a > i.survey {background-position: -3px -330px;}
+.krish-side-menu > li > a > i.services {background-position: -3px -49px;}
+.krish-side-menu > li > a > i.payment {background-position: -3px -89px;}
+.krish-side-menu > li > a > i.reports {background-position: -3px -129px;}
+.krish-side-menu > li > a > i.reports {background-position: -3px -129px;}
+.krish-side-menu > li > a > i.promotions {background-position: -3px -249px;}
+.krish-side-menu > li > a > i.loan {background-position: -3px -410px;}
+.krish-side-menu > li > a > i.support {background-position: -3px -209px;}
+.krish-side-menu .treeview-menu>li>a{padding:10px 5px 10px 15px;}
+.main-footer1 {
+    background: #d90029;
+    padding: 10px 5px;
+    color: #b5e0f9;
+    font-size: 11px;
+    height: 87px;
+    line-height: 16px;
+    border-top: none;
+    position: fixed;
+    bottom: 0px;
+    width: 230px;
+    margin-left: 0;
+    text-align: center;
+    font-weight: 600;
+    opacity: 1;
+    -webkit-transition: all .25s ease-in-out;
+    -moz-transition: all .25s ease-in-out;
+    -o-transition: all .25s ease-in-out;
+    transition: all .25s ease-in-out;
+}
+.social-icon {
+    position: relative !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+}
+.social-icon > p {
+    text-align: center;
+    font-size: 10px;
+    line-height: 12px;
+    /* padding: 5px; */
+    padding-top: 5px;
+    color: #a0dcff;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0 0 10px;
+}
+    .social-icon > span > a {
+        display: inline-block;
+        margin: 0px 2px;
+    }
+    .social-icon > span > a > i {
+    color: #fff;
+    font-size: 28px;
+}
+.social-icon > span {
+    text-align: center;
+    display: block;
+}
+.sidebar-mini.sidebar-collapse .sidebar-menu > li > a > i {
+    float: none;
+    display: block;
+}
+.navbar-nav > .user-menu .user-image {
+    width: 44px;
+    height: 44px;
+    margin-right: 10px;
+    margin-left: 15px;
+    margin-top: 3px;
+    border: 2px solid rgba(0, 0, 0, 0.12);
+}
+.navbar-nav > .user-menu .userInfoName {
+    display: block;
+    color: #fff;
+    padding-top: 10px;
+    height: 22px;
+    /*width: 140px;*/
+    padding-right: 30px;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+}
+.user-menu > a.dropdown-toggle:after {
+    content: '\f107';
+    font-family: FontAwesome;
+    z-index: 10;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    font-size: 11px;
+    width: 20px;
+    height: 50px;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: block;
+}
+.dropdown.user.user-menu .userBalanceInfo {
+    position: absolute;
+    z-index: 500;
+    top: 23px;
+    line-height: 160%;
+    left: 65px;
+    font-size: 12px;
+    color: #fff;
+}
+.dropdown.user.user-menu .userBalanceInfo .userBalanceViewLink, .dropdown.user.user-menu .userBalanceInfo .userBalanceRefreshLink {
+    text-align: center;
+    position: relative;
+    float: left;
+    display: block;
+    width: 20px;
+    height: 25px;
+}
+.userBalanceViewLink.visible:before, .userBalanceRefreshLink:before, .userBalanceViewLink.unvisible:before {
+    /*content: '\f06e';
+    color: #ffd978;
+    font-family: FontAwesome;
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 100%;*/
+}
+.dropdown.user.user-menu .userBalanceInfo .userBalanceInner {
+    float: left;
+}
+.WebRupee {
+    padding: 0 4px;
+    font-family: WebRupee;
+}
+.dropdown.user.user-menu .userBalanceInfo .userBalanceRefreshLink {
+    text-align: center;
+    position: relative;
+    float: left;
+    display: block;
+    width: 20px;
+    height: 25px;
+}
+.userBalanceRefreshLink:before {
+    /*content: '\f021';
+    color: #ffffff;
+    font-size: 9px;
+    top: 0;*/
+}
+.navbar-nav > .user-menu > .dropdown-menu {
+    width: auto;
+    border: none;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .2);
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
+}
+.new-dropdown > li:not(:last-child) {
+    border: 1px solid #831400;
+    padding: 8px;
+    margin-top: -1px;
+}
+.new-dropdown {
+    background-color: white !important;
+    color: black;
+}
+    .new-dropdown li a {
+        color: black;
+        font-size: 14px !important;
+        padding: 0px !important;
+    }
+        .new-dropdown li a:hover {
+            background: none;
+            color: black;
+        }
+
+.cursor-pointer {
+    cursor: pointer;
+}
+.main-header .logo {
+    /*width: 200px;*/
+    position: fixed;
+    height: 73px;
+}
+aside.main-sidebar {
+    /*padding-top: 73px;
+    width: 230px;
+    padding-bottom: 87px;
+
+    height:100%;*/
+    overflow-y: auto;
+}
+.main-sidebar {
+    position: fixed !important;
+    left: 0;
+    top: 0;
+}
+#carousel-example-generic a.left.carousel-control, #carousel-example-generic a.right.carousel-control {
+    width: 5%;
+}
+#carousel-example-generic .carousel-control {
+    opacity: .6;
+}
+#carousel-example-generic a.left.carousel-control .fa-angle-left {
+    left: 0px;
+}
+.box.box-primary {
+    border-top-color: #004d99;
+}
+.promo-banners.box {
+    border-top: 0px;
+}
+.content .quick-links .box-body {
+    padding: 0px;
+    border-radius: 0px;
+}
+
+#carousel-example-generic a.carousel-control .fa {
+    color: #194086;
+    background-color: #fff;
+    padding: 5px 10px;
+    font-size: 30px;
+}
+#carousel-example-generic .carousel-inner .post-login img {
+    height: 300px;
+}
+#carousel-example-generic .carousel-inner .item img {
+    width: 100%;
+}
+.promo-banners .box-body {
+    padding: 5px;
+    border-radius: 0px;
+}
+.quick-link-home{padding:0px;margin:0px;list-style:none;background-color:#004d99;}
+.quick-link-home li a{border: 1px solid #831400;width: 16.6%;min-height: 100px;float:left;text-align: center;background-color: #d90029;color: #fff;border-right: 1px solid #831400;transition-timing-function: cubic-bezier(0.57, 0.67, 1, 1);transition: .5s;}
+.position-relative {position: relative;}
+.quick-link-home li a span.img-icon {
+    background-image: url(../img/service_icon-sprite.png);
+    background-repeat: no-repeat;
+    width: 36px;
+    height: 36px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 8px;
+    background-size: 684px 36px;
+}
+.quick-link-home li a span.img-txt{display: block;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    font-size: 11px;
+    margin-top: 7px;
+    line-height: 13px;
+    text-transform: uppercase;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;}
+span.img-icon.quick-icon {
+    background-position: -36px 0px;
+}
+span.img-icon.aeps-icon {
+    background-position: -612px 0px;
+}
+span.img-icon.hotel-icon {
+    background-position: -432px 0px;
+}
+span.img-icon.mobile-icon {
+    background-position: -72px 0px;
+}
+span.img-icon.ins-icon {
+    background-position: -108px 0px;
+}
+span.img-icon.air-icon {
+    background-position: -216px 0px;
+}
+span.img-icon.bus-icon {
+    background-position: -252px 0px;
+}
+span.img-icon.rail-icon {
+    background-position: -288px 0px;
+}
+span.img-icon.ins-icon {
+    background-position: -108px 0px;
+}
+span.img-icon.collection-icon {
+    background-position: -396px 0px;
+}
+span.img-icon.mutualFunds-icon {
+    background-position: -648px 0px;
+}
+span.img-icon.pan-icon {
+    background-position: -504px 0px;
+}
+span.img-icon.wallet-icon {
+    background-position: -324px 0px;
+}
+.active-tick {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    /* width: auto; */
+    text-align: right;
+    display: inline-block;
+    text-transform: uppercase;
+    background-color: #3ab656;
+    color: #fff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    padding: 3px;
+    /* height: 20px; */
+    font-size: 10px;
+    line-height: normal;
+    font-weight: 600;
+    /* letter-spacing: 0.03em; */
+    /* position: relative; */
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.shape {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    left: 0px;
+    top: 0px;
+    border-style: inset;
+    border-width: 0px 40px 40px 0px;
+    border-color: transparent transparent #de2b0a transparent;
+    float: left;
+    color: #eee;
+    transform: rotate(90deg);
+    font-weight: 600;
+    font-size: 12px;
+}
+.shape>span {
+    text-align: center;
+    top: 16px;
+    left: 0px;
+    position: absolute;
+    transform: rotate(90deg);
+    transform: rotate(225deg);
+}
+.quickLink-info.insurance-hub {
+    background: linear-gradient(288deg, #c36664, #ef2925);
+    -webkit-animation: AnimationName 5s ease infinite;
+    -moz-animation: AnimationName 5s ease infinite;
+    -o-animation: AnimationName 5s ease infinite;
+    animation: AnimationName 1s ease infinite;
+    background-size: 400% 400%;
+    left: 0px;
+    top: 0px;
+    padding: 5px 7px 2px 5px;
+    color: #eee;
+    font-weight: 600;
+    font-size: 12px;
+    height: 44px !important;
+    line-height: 1.2;
+}
+.quickLink-info {
+    position: absolute;
+    width: auto;
+    border-bottom-right-radius: 14px;
+    height: 50px;
+    background: linear-gradient(288deg, #00a605, #0a560a);
+    -webkit-animation: AnimationName 5s ease infinite;
+    -moz-animation: AnimationName 5s ease infinite;
+    -o-animation: AnimationName 5s ease infinite;
+    animation: AnimationName 5s ease infinite;
+    background-size: 400% 400%;
+    left: 0px;
+    top: 0px;
+    padding: 5px 7px 2px 5px;
+    color: #eee;
+    font-weight: 600;
+    font-size: 12px;
+}

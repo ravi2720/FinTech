@@ -1,0 +1,32 @@
+﻿body
+{
+}
+.header {
+    background: #ce330c;
+}
+.text-white{color:#fff;}
+.header-bottom{border-bottom:1px solid #0a458b;}
+.logo img{max-width:200px;}
+.header-marqee{padding-top:20px;}
+.header-marqee label{background:#fff;border:#f00 1px solid;padding:2px 15px;border-radius:30px;}
+.bg-blue{background:#0a458b;}
+.border-round{border-radius:10px;}
+.min-height-350{min-height:350px;}
+.max-height-350{height:300px;overflow:hidden;}
+.heading-box{}
+.heading-box h4{color:#fff;font-size:18px;font-weight:600;padding-bottom: 10px;border-bottom:1px solid #fff;}
+.input-box{margin-bottom:10px;}
+.input-box input{background:transparent;border-radius:30px;border:1px solid #fff;color:#fff !important;}
+.input-box input:focus{background:transparent;box-shadow:none;outline:0;border:1px solid #fff;}
+.input-box input::placeholder{color:#fff !important;}
+.login{text-align:center;margin:0 auto;background:#fff;border:1px solid #ffd800;border-radius:30px;display:block;padding:3px 50px;color:#ff6a00;}
+.forgto-pass{}
+.forgto-pass a{display:block;text-align:right;}
+.main-update-box{border:1px solid #0a458b;border-radius:0px 0px 10px 10px;}
+.footer-menu{}
+.footer-list{list-style:none;padding:0px;margin:0px;display: flex;
+    justify-content:space-around;}
+.footer-list li{display:inline-block;}
+.footer-list li a{border:#ffd800 1px solid;color:#fff;padding:3px 10px;border-radius:30px;}
+@media screen and (max-width:767px){.footer-list{list-style:none;padding:0px;margin:0px;display: block;}.footer-list li{display:block;margin-bottom:20px;}.min-height-350{margin:20px 0px;}
+.max-height-350{margin:20px 0px;}}

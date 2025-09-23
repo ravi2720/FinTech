@@ -1,0 +1,356 @@
+﻿
+
+
+/* aeps rules*/
+
+.aeps_tabs ul:after, .mobile_blk_wrap:after {
+    display: table;
+    content: '';
+    clear: both;
+}
+
+.aeps_tabs ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+    .aeps_tabs ul li {
+        list-style: none;
+        display: block;
+        float: left;
+        width: 25%;
+        text-align: center;
+    }
+
+        .aeps_tabs ul li a {
+            background: #5a5a5a;
+            padding: 25px 0;
+            color: #ffffff;
+            display: block;
+            position: relative;
+            font-size: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-right: 1px solid #fff;
+        }
+
+        .aeps_tabs ul li:last-child a {
+            border: none;
+        }
+
+        .aeps_tabs ul li.active a, .aeps_tabs ul li:hover a {
+            background: #8C46B1;
+            color: #fff;
+        }
+
+.aeps_form {
+    background: #fff;
+    padding: 20px 40px;
+}
+
+    .aeps_form .form-group {
+        padding: 15px 0;
+        border-bottom: 1px solid #efecec;
+        margin-bottom: 0;
+    }
+
+        .aeps_form .form-group label, .aeps_form .form-group p {
+            letter-spacing: 1px;
+            font-size: 18px;
+            font-weight: normal;
+            font-size: 15px;
+            position: relative;
+            margin: 0;
+        }
+
+            .aeps_form .form-group label img {
+                margin-right: 10px;
+            }
+
+        .aeps_form .form-group input[type='text'], input[type='password'] {
+            width: 100%;
+            padding: 10px 20px;
+            border-radius: 5px;
+            height: auto;
+            transition: all ease 0.3s;
+            border: 1px solid #d6d6d6;
+        }
+
+        .aeps_form .form-group input:focus {
+            border-color: #337ab7;
+        }
+
+        .aeps_form .form-group .mobile_blk_wrap {
+            position: relative;
+        }
+
+.mobile_blk_wrap .mobile_blk {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    font-size: 17px;
+    border-right: 1px solid #efecec;
+    padding: 0 15px;
+}
+
+.aeps_form .form-group .mobile_blk_wrap input {
+    padding-left: 105px;
+}
+
+.aeps_form .form-group .aadhar_blk input {
+    padding-left: 62px;
+}
+
+.aeps_form .form-group .enter_amount input {
+    padding-left: 92px;
+}
+
+.aeps_form .form-group label, .aeps_form .form-group .cus_radio label {
+    margin-right: 15px;
+}
+
+.cus_radio input[type="radio"], .cus_check input[type="checkbox"] {
+    display: none;
+}
+
+.cus_radio label:before {
+    position: absolute;
+    content: '';
+    left: 3px;
+    top: 3px;
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    z-index: 2;
+}
+
+.cus_radio label:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background: #0c83bd;
+    z-index: 1;
+}
+
+label.cus_radio_chk:before {
+    background: #39b54a;
+}
+
+.cus_radio label, .cus_check label {
+    display: inline-block;
+    padding-left: 28px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.fast_cash button {
+    margin-right: 5px;
+    background: #5a5a5a;
+    border: none;
+    color: #fff;
+    padding: 7px 10px;
+    border-radius: 3px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+    .fast_cash button.active_cash {
+        background: #0c83bd;
+    }
+
+.aeps_form .form-group label.line_h_92 {
+    line-height: 92px;
+}
+
+.aeps_form .form-group label.line_h_134 {
+    line-height: 134px;
+}
+
+.aeps_form .form-group .line_h_40 {
+    line-height: 40px;
+}
+
+.aadhar_blk input {
+    letter-spacing: 5px;
+    font-size: 20px;
+}
+
+.mobile_blk_wrap.aadhar_blk .mobile_blk {
+    top: 12px;
+}
+
+.accord_head {
+    background: #2da94c;
+    padding: 10px 30px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+    .accord_head:before {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        font-family: 'FontAwesome';
+        content: "\f078";
+        font-size: 12px;
+        color: #fff;
+    }
+
+.active_accord.accord_head:before {
+    content: "\f077";
+}
+
+.accord_content {
+    display: none;
+    margin-bottom: 10px;
+    text-align: justify;
+    padding: 10px;
+}
+
+.active_accord {
+    background: #5a5a5a;
+}
+
+.show_accord {
+    display: block;
+}
+
+.list_btn li {
+    list-style: none;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.list_btn a {
+    display: block;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    color: #fff;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+
+/* aeps rules*/
+
+
+.aeps_steps {
+    margin: 0;
+    padding: 0;
+}
+
+
+    .aeps_steps li {
+        list-style: none;
+        display: block;
+        font-size: 15px;
+        /* margin-bottom: 7px; */
+        line-height: 30px;
+        padding-left: 25px;
+        position: relative;
+    }
+
+
+        .aeps_steps li:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-family: 'FontAwesome';
+            content: "\f14a";
+            font-size: 18px;
+            color: #2da94c;
+        }
+
+    .aeps_steps h4 {
+        text-align: center;
+        padding: 15px 0;
+        margin-bottom: 20px;
+        font-weight: 700;
+        position: relative;
+    }
+
+        .aeps_steps h4:after {
+            position: absolute;
+            content: '';
+            width: 120px;
+            left: 50%;
+            bottom: 0;
+            margin-left: -60px;
+            height: 3px;
+            background: #f04e2d;
+        }
+
+
+.loan_tabs ul:after {
+    display: table;
+    content: '';
+    clear: both;
+}
+
+.loan_tabs ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+    .loan_tabs ul li {
+        list-style: none;
+        display: block;
+        float: left;
+        width: 33.33%;
+        text-align: center;
+        background: #5a5a5a;
+        line-height: 70px;
+        color: #ffffff;
+        display: block;
+        position: relative;
+        font-size: 15px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        border-right: 1px solid #fff;
+    }
+
+
+
+        .loan_tabs ul li a {
+            color: #ffffff;
+            background: #5a5a5a;
+            display: block;
+        }
+
+        .loan_tabs ul li span {
+            display: block;
+            font-size: 12px;
+        }
+
+
+        .loan_tabs ul li.active, .loan_tabs ul li.active a, .loan_tabs ul li:hover a {
+            background: #2da94c;
+            color: #fff;
+        }
+
+.loan_label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.casa_tabs ul li {
+    width: 25%;
+}
+
+.kyc_tabs ul li {
+    width: 20%;
+}

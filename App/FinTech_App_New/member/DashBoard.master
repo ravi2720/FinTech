@@ -1,0 +1,1017 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="DashBoard.master.cs" Inherits="Member_DashBoard" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="UTF-8">
+    <meta name="title" content='Multi Recharge Service Provider | <%= company.Name %>' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="<%= company.Name %> Services is the leading multi recharge service provider. Start your own business and earn money today.">
+    <meta name="keywords" content="multi recharge service provider, electricity bill payment provider, dth recharge service provider, multi bill payments system, online recharge services, postpaid recharge service provider, online money transfer business, AEPS service provider, aadhar enabled banking service provider, recharge service provider business, Domestic Money Remittance, multi recharge portal distributorship">
+    <meta name="Author" content="SoniTechno">
+
+    <!-- Title -->
+    <title><%= company.Name %></title>
+
+    <!--- Favicon --->
+    <link rel="icon" href='<%= "./images/Company/"+company.Fevicon %>' type="image/x-icon" />
+
+    <!-- Bootstrap css -->
+    <link href="./assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" id="style" />
+
+    <!--- Style css --->
+    <link href="./assets/css/style.css" rel="stylesheet">
+    <link href="./assets/css/plugins.css" rel="stylesheet">
+    <link href="./assets/plugins/jquery-ui/themes/base/tooltip.css" rel="stylesheet" />
+
+    <!------Notify ----->
+    <link href="./assets/plugins/notify/css/notifIt.css" rel="stylesheet" />
+    <script src="./assets/plugins/notify/js/notifit-custom.js"></script>
+    <script src="./assets/plugins/notify/js/notifIt.js"></script>
+
+    <!--- Icons css --->
+    <link href="./assets/css/icons.css" rel="stylesheet">
+    <link href="./app_js/alertifyjs/css/alertify.min.css" rel="stylesheet" />
+
+    <!--- Animations css --->
+    <link href="./assets/css/animate.css" rel="stylesheet">
+    <script src="./app_js/alertifyjs/alertify.min.js"></script>
+
+    <script src="./app_js/jquery-3.1.0.min.js"></script>
+    
+    
+    <script src="./app_js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous"></script>
+    <script src="./app_js/vue.js"></script>
+    <script src="./app_js/lodash.js"></script>
+    <script src="./app_js/vuex.js"></script>
+    <script src="./app_js/axios.min.js"></script>
+    <link href="./css/Common.css" rel="stylesheet" />
+    <script src="./app_js/qrcode.min.js"></script>
+    <style>
+        :root {
+            --dark-theme: <%= company.HeaderColor %> !important;
+            --dark-body: <%= company.BodyColor %> !important;
+            --primary-bg-color: <%= company.BodyColor %> !important;
+            --primary-bg-hover: #3d4bb7;
+            --primary-bg-border: #3d4bb7;
+            --blue: $primary;
+            --indigo: $primary;
+            --purple: #6f42c1;
+            --pink: $pink;
+            --red: $danger;
+            --orange: $orange;
+            --yellow: #ffc107;
+            --green: $success;
+            --teal: $teal;
+            --cyan: $info;
+            --white: $white;
+            --gray: $secondary;
+            --gray-dark: $gray-800;
+            --primary: $primary;
+            --secondary: $secondary;
+            --success: $success;
+            --info: $info;
+            --warning: #ffc107;
+            --danger: $danger;
+            --light: #f8f7ff;
+            --dark: $gray-800;
+            --breakpoint-xs: 0;
+            --breakpoint-sm: 576px;
+            --breakpoint-md: 768px;
+            --breakpoint-lg: 992px;
+            --breakpoint-xl: 1200px;
+            --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<%--main-body app ltr horizontal light-theme fixed-layout centerlogo-horizontal dark-header--%>
+<body class="main-body app ltr light-theme dark-header sidebar-mini">
+    <form id="form1" runat="server">
+        <div id="load" style="visibility: hidden; z-index: 99999999"></div>
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <div class="sticky-icon">
+            <a href="Home.aspx" class="Facebook">
+                <img src="https://cdn-icons-png.flaticon.com/512/950/950299.png" height="30" />
+                My Service </a>
+        </div>
+        <div>
+            <!-- Loader -->
+            <div id="global-loader">
+                <img src="./assets/img/loaders/loader-4.svg" class="loader-img" alt="Loader">
+            </div>
+            <!-- /Loader -->
+            <!-- page -->
+            <div class="page custom-index">
+                <!-- main-header -->
+                <div class="main-header side-header sticky nav nav-item">
+                    <div class="container-fluid main-container ">
+                        <div class="main-header-left ">
+                            <div class="app-sidebar__toggle mobile-toggle" data-bs-toggle="sidebar">
+                                <a class="open-toggle" href="javascript:void(0);"><i class="header-icons" data-eva="menu-outline"></i></a>
+                                <a class="close-toggle" href="javascript:void(0);"><i class="header-icons" data-eva="close-outline"></i></a>
+                            </div>
+                            <div class="responsive-logo">
+                                <a href="DashBoard.aspx" class="header-logo">
+                                    <img src='<%= "./images/Company/"+company.Logo %>' class="logo-11"></a>
+                                <a href="DashBoard.aspx" class="header-logo">
+                                    <img src='<%= "./images/Company/"+company.Logo %>' class="logo-1"></a>
+                            </div>
+                            <ul class="header-megamenu-dropdown  nav">
+                                <li class="nav-item">
+                                    <div class="btn-group dropdown">
+                                        <button aria-expanded="false" aria-haspopup="true" class="btn btn-link dropdown-toggle" data-bs-toggle="dropdown" id="dropdownMenuButton2" type="button"><span><i class="fe fe-settings"></i>Service </span></button>
+                                        <div class="dropdown-menu">
+                                            <div class="setting-scroll">
+                                                <div>
+                                                    <div class="setting-menu ">
+                                                        <asp:Repeater runat="server" ID="rptServiceData">
+                                                            <ItemTemplate>
+                                                                <a class="dropdown-item" href='<%# Eval("URL") %>'>
+                                                                    <img style="height: 50px;" src='<%# "./images/icon/"+Eval("Image") %>' alt="postpaid" class="img-fluid"><%# Eval("Name") %></a>
+                                                            </ItemTemplate>
+                                                        </asp:Repeater>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <ul class="setting-menu-footer flex-column ps-0">
+                                                <li class="divider mb-0 pb-0 "></li>
+                                                <li class="setting-menu-btn">
+                                                    <button class=" btn-shadow btn btn-success btn-sm">Cancel</button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <button class="navbar-toggler nav-link icon navresponsive-toggler vertical-icon ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fe fe-more-vertical header-icons navbar-toggler-icon"></i>
+                        </button>
+                        <div class="mb-0 navbar navbar-expand-lg navbar-nav-right responsive-navbar navbar-dark p-0  mg-lg-s-auto">
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+                                <div class="main-header-right">
+
+                                    <li class="dropdown nav-item main-layout">
+                                        <a class="new theme-layout nav-link-bg layout-setting">
+                                            <span class="dark-layout"><i class="fe fe-moon"></i></span>
+                                            <span class="light-layout"><i class="fe fe-sun"></i></span>
+                                        </a>
+                                    </li>
+
+
+                                    <div class="nav nav-item  navbar-nav-right mg-lg-s-auto">
+                                        <div class="nav-item full-screen fullscreen-button">
+                                            <a class="new nav-link full-screen-link" href="javascript:void(0);"><i class="fe fe-maximize"></i></span></a>
+                                        </div>
+                                        <div class="dropdown  nav-item main-header-message ">
+                                            <a class="new nav-link" href="javascript:void(0);"><i class="fe fe-mail"></i><span class=" pulse-danger"></span></a>
+                                            <div class="dropdown-menu">
+                                                <div class="menu-header-content bg-primary-gradient text-start d-flex">
+                                                    <div class="">
+                                                        <h6 class="menu-header-title text-white mb-0">5 new Messages</h6>
+                                                    </div>
+                                                    <div class="my-auto mg-s-auto">
+                                                        <a class="badge bg-pill bg-warning float-end" href="javascript:void(0);">Mark All Read</a>
+                                                    </div>
+                                                </div>
+                                                <div class="main-message-list chat-scroll">
+                                                    <a href="mail.html" class="p-3 d-flex border-bottom">
+                                                        <div class="drop-img  cover-image  " data-bs-image-src="./assets/img/faces/3.jpg">
+                                                            <span class="avatar-status bg-teal"></span>
+                                                        </div>
+
+                                                        <div class="wd-90p">
+                                                            <div class="d-flex">
+                                                                <h5 class="mb-1 name">Paul Molive</h5>
+                                                                <p class="time mb-0 text-end ms-auto float-end">10 min ago</p>
+                                                            </div>
+                                                            <p class="mb-0 desc">I'm sorry but i'm not sure how...</p>
+                                                        </div>
+                                                    </a>
+                                                    <a href="mail.html" class="p-3 d-flex border-bottom">
+                                                        <div class="drop-img cover-image" data-bs-image-src="./assets/img/faces/2.jpg">
+                                                            <span class="avatar-status bg-teal"></span>
+                                                        </div>
+                                                        <div class="wd-90p">
+                                                            <div class="d-flex">
+                                                                <h5 class="mb-1 name">Sahar Dary</h5>
+                                                                <p class="time mb-0 text-end ms-auto float-end">13 min ago</p>
+                                                            </div>
+                                                            <p class="mb-0 desc">All set ! Now, time to get to you now......</p>
+                                                        </div>
+                                                    </a>
+                                                    <a href="mail.html" class="p-3 d-flex border-bottom">
+                                                        <div class="drop-img cover-image" data-bs-image-src="./assets/img/faces/9.jpg">
+                                                            <span class="avatar-status bg-teal"></span>
+                                                        </div>
+                                                        <div class="wd-90p">
+                                                            <div class="d-flex">
+                                                                <h5 class="mb-1 name">Khadija Mehr</h5>
+                                                                <p class="time mb-0 text-end ms-auto float-end">20 min ago</p>
+                                                            </div>
+                                                            <p class="mb-0 desc">Are you ready to pickup your Delivery...</p>
+                                                        </div>
+                                                    </a>
+                                                    <a href="mail.html" class="p-3 d-flex border-bottom">
+                                                        <div class="drop-img cover-image" data-bs-image-src="./assets/img/faces/12.jpg">
+                                                            <span class="avatar-status bg-danger"></span>
+                                                        </div>
+                                                        <div class="wd-90p">
+                                                            <div class="d-flex">
+                                                                <h5 class="mb-1 name">Barney Cull</h5>
+                                                                <p class="time mb-0 text-end ms-auto float-end">30 min ago</p>
+                                                            </div>
+                                                            <p class="mb-0 desc">Here are some products ...</p>
+                                                        </div>
+                                                    </a>
+                                                    <a href="mail.html" class="p-3 d-flex border-bottom">
+                                                        <div class="drop-img cover-image" data-bs-image-src="./assets/img/faces/5.jpg">
+                                                            <span class="avatar-status bg-teal"></span>
+                                                        </div>
+                                                        <div class="wd-90p">
+                                                            <div class="d-flex">
+                                                                <h5 class="mb-1 name"><%= dtMember.Rows[0]["Name"].ToString() %></h5>
+                                                                <p class="time mb-0 text-end ms-auto float-end">35 min ago</p>
+                                                            </div>
+                                                            <p class="mb-0 desc">I'm sorry but i'm not sure how...</p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="text-center dropdown-footer">
+                                                    <a href="mail.html">VIEW ALL</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown nav-item main-header-notification">
+                                            <a class="new nav-link" href="javascript:void(0);"><i class="fa fa-user"></i><span class=" pulse"></span></a>
+                                            <div class="dropdown-menu">
+                                                <div class="menu-header-content bg-primary-gradient text-start d-flex">
+                                                    <div class="">
+                                                        <h6 class="menu-header-title text-white mb-0">I Card</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="main-notification-list">
+                                                    <div class="business2">
+
+                                                        <div class="front">
+                                                            <div class="red">
+
+                                                                <div class="head">
+                                                                    <img src='<%# "./images/icon/"+(dtMember.Rows[0]["Pic"].ToString()==""?"nonpic.png":dtMember.Rows[0]["Pic"].ToString()) %>' alt="logo" />
+                                                                    <div>
+                                                                        <h2>Business Card</h2>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="avatarBg">
+                                                                <div class="img">
+                                                                    <img src='<%# "./images/icon/"+(dtMember.Rows[0]["Pic"].ToString()==""?"nonpic.png":dtMember.Rows[0]["Pic"].ToString()) %>' alt="" />
+                                                                </div>
+                                                                <p><%= dtMember.Rows[0]["Name"].ToString() %></p>
+                                                                <p><%= dtMember.Rows[0]["RoleName"].ToString() %></p>
+                                                            </div>
+                                                            <div class="infos">
+                                                                <div>
+                                                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 513.64 513.64"
+                                                                        style="enable-background: new 0 0 513.64 513.64;" xml:space="preserve">
+                                                                        <path d="M499.66,376.96l-71.68-71.68c-25.6-25.6-69.12-15.359-79.36,17.92c-7.68,23.041-33.28,35.841-56.32,30.72
+                                c-51.2-12.8-120.32-79.36-133.12-133.12c-7.68-23.041,7.68-48.641,30.72-56.32c33.28-10.24,43.52-53.76,17.92-79.36l-71.68-71.68
+                                c-20.48-17.92-51.2-17.92-69.12,0l-48.64,48.64c-48.64,51.2,5.12,186.88,125.44,307.2c120.32,120.32,256,176.641,307.2,125.44
+                                l48.64-48.64C517.581,425.6,517.581,394.88,499.66,376.96z" />
+                                                                    </svg>
+                                                                    <div>
+                                                                        <p><%= dtMember.Rows[0]["Mobile"].ToString() %></p>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                                        <g id="Layer_7" data-name="Layer 7">
+                                                                            <path style="fill: #000;"
+                                                                                d="M47,27.57h0a21.55,21.55,0,0,0-.43-7.29.71.71,0,0,0,0-.41l-.27-1.06-.13,0a22.07,22.07,0,0,0-3-6.15.7.7,0,0,0-.15-.63l-.54-.73-.1-.13-.06.05.05-.06-.13.1h0a.63.63,0,0,1,.16.36,22.51,22.51,0,0,0-5.18-4.8c0-.25-.17-.52-.64-.81L36.45,6l-.3-.18-.07,0-.35-.2-.08,0-.35-.19a17.5,17.5,0,0,0-6.69-1.95h0l-.5,0h-.05v0L28,3.41h0v0h0v0l0,0v0l-.52-.1h0a18.63,18.63,0,0,0-3.4-.32,18.29,18.29,0,0,0-4.49.56l-.43.11-.28.09c-.55.19-.66.44-.63.63a22.66,22.66,0,0,0-6.33,3.27.52.52,0,0,1,.28-.48L12.12,7h0l0,.06-.1-.12-.14.1-.72.55a.67.67,0,0,0-.3.72,22.35,22.35,0,0,0-4.67,5.28.59.59,0,0,1,.07-.29l0,0-.13-.08-.56.94a.75.75,0,0,0-.06.59,21.69,21.69,0,0,0-2.38,6.71h-.1L3,21.86,3,22.55a.59.59,0,0,0,0,.33,21.42,21.42,0,0,0,.47,7.36h0l0,.18c0,.13.07.27.1.39s.07.27.11.4l0,.11c.07.24.15.49.23.73s.23.59.35.9l.15-.06c-.12-.33-.24-.67-.35-1A6.69,6.69,0,0,0,5.9,33c.29.14.61.29,1,.43a19.65,19.65,0,0,0,2.43,5.77L8.73,39a4.46,4.46,0,0,1-1.47-1l0-.05L7.1,38l.67.87a4.3,4.3,0,0,0,1.45,1c.22.11.47.22.74.33a16.07,16.07,0,0,0,3.73,3.68l0,.1,1,.57.12.06.41.19c.4.21.81.41,1.23.58l.28.12.41.16h0l0-.07v-.08l-.41-.17-.12-.05c.45.13.94.26,1.46.38a5,5,0,0,0,1.8.84l.28.07,0-.08v-.08A3.64,3.64,0,0,1,19,45.87c.92.2,1.92.38,2.91.52-.05.49-.05.49,0,.51l.26,0c.12,0,.23-.14.36-.45,1,.13,2,.23,3,.28a4.78,4.78,0,0,1-1.29.18H24v.16l.45,0h.07a6.15,6.15,0,0,0,1.9-.31l.83,0,.79,0v.1l.55-.08.71-.13.24,0,1.14-.27v0a16.55,16.55,0,0,0,5.18-2.66,4.6,4.6,0,0,0,1.89-.59l.88-.65-.1-.13,0,0a4.29,4.29,0,0,1-1.63.55A19.58,19.58,0,0,0,40.88,38a4.78,4.78,0,0,0,2.72-1h0l.35-.56c.07-.11.13-.23.22-.37l0-.08-.07,0-.07,0,.08,0,.07,0-.14-.07L44,36a4.5,4.5,0,0,1-2.58,1,22.92,22.92,0,0,0,2.23-6.72,5.93,5.93,0,0,0,2.8-1A21.14,21.14,0,0,1,44.58,35l.15.07c.15-.3.29-.59.43-.85l.61-1.47a20.78,20.78,0,0,0,1-3.86.74.74,0,0,0,0-.14L47,28l.06-.44h0ZM12.12,7h0l0-.06Zm25,.09A22.56,22.56,0,0,1,42.28,12a3.56,3.56,0,0,1-2,.7A22.64,22.64,0,0,0,36,7.52,2.22,2.22,0,0,0,37.11,7.09ZM26.63,12.17c-2.08-.29-4.16-.67-6-1.08a24.15,24.15,0,0,1,3.06-4.55c1.15.26,2.43.49,3.71.67C27.15,8.6,26.9,10.28,26.63,12.17Zm1,1.18c2.29.3,4.5.5,6.61.6a39.57,39.57,0,0,1,.93,6.67c-2.59-.12-5.36-.37-8.24-.74C27.2,17.57,27.44,15.37,27.63,13.35Zm-10,4.9a44.29,44.29,0,0,1,2.51-6.2c2,.44,4.19.83,6.39,1.15-.29,2-.6,4.17-.94,6.49C22.81,19.29,20.06,18.8,17.58,18.25Zm7.79,2.63c-.33,2.36-.68,4.83-1,7.33-3-.43-6-1-8.72-1.57a52.4,52.4,0,0,1,1.6-7.23C19.76,20,22.57,20.48,25.37,20.88Zm-5.77-10a39.56,39.56,0,0,1-4.7-1.37,21.93,21.93,0,0,1,5.22-3.94A23.16,23.16,0,0,0,23,6.38,24.54,24.54,0,0,0,19.6,10.86Zm-.54,1A39.89,39.89,0,0,0,16.35,18a51.33,51.33,0,0,1-6.21-1.82,27,27,0,0,1,3.95-5.8A41.71,41.71,0,0,0,19.06,11.81ZM16,19.12a48,48,0,0,0-1.68,7.21,55.59,55.59,0,0,1-6.8-2,27.54,27.54,0,0,1,2.13-7.08A53.15,53.15,0,0,0,16,19.12Zm-.52,8.79c2.71.6,5.72,1.14,8.72,1.56-.35,2.47-.66,4.75-.95,6.8-2.79-.4-5.59-.91-8.12-1.46A44.68,44.68,0,0,1,15.44,27.91Zm9,9.59c2.86.37,5.62.62,8.2.74a21.87,21.87,0,0,1-2.58,4.88c-2.06-.1-4.26-.29-6.54-.59C23.82,41.12,24.13,39.43,24.45,37.5Zm.18-1c.34-2.08.69-4.36,1-6.78,3.15.41,6.18.68,9,.82A38.63,38.63,0,0,1,33,37.22C30.38,37.1,27.56,36.84,24.63,36.46Zm1.21-8c.34-2.46.66-4.93.95-7.34,2.95.38,5.78.64,8.44.77a46.87,46.87,0,0,1-.37,7.39C32,29.1,29,28.82,25.84,28.41ZM35,12.93a22.83,22.83,0,0,0-2.34-5.24h.8a18.54,18.54,0,0,0,2-.1,22,22,0,0,1,4.19,5.21A28.53,28.53,0,0,1,36.5,13ZM36.84,14a30,30,0,0,0,3.39-.17,26.22,26.22,0,0,1,2.38,6.65,38.68,38.68,0,0,1-4.19.2l-2,0A36,36,0,0,0,35.32,14ZM35.58,5.64l.1.06c.3.18.47.35.49.49a22.53,22.53,0,0,0-5.9-2.43A18.78,18.78,0,0,1,35.58,5.64Zm.49.78a2.23,2.23,0,0,1-1,.34,18.75,18.75,0,0,0-5.37-2.95A22.18,22.18,0,0,1,36.07,6.42ZM29,3.76a17.51,17.51,0,0,1,5.58,3.07c-.46,0-1,.07-1.61.07l-.82,0a11.07,11.07,0,0,0-3.21-3.11Zm-.83,0,.39,0a9.6,9.6,0,0,1,2.92,3.09c-1-.06-2.16-.16-3.32-.31A23.7,23.7,0,0,0,28.15,3.74Zm0,3.57c1.33.17,2.62.29,3.84.35a23.87,23.87,0,0,1,2,5.23c-2-.09-4.08-.28-6.25-.57C27.9,10.4,28,8.71,28.1,7.31Zm-.6-3.67.39.07c-.09.58-.24,1.52-.42,2.75-1.1-.16-2.21-.36-3.21-.58A8.79,8.79,0,0,1,27.5,3.64Zm-.35-.1a10.15,10.15,0,0,0-3.53,2.2A24.13,24.13,0,0,1,21.16,5,16.41,16.41,0,0,1,27,3.51Zm-6.5,1.29-.39-.18a2.55,2.55,0,0,1-.74-.48,22.22,22.22,0,0,1,6-.83c.32,0,.65,0,1,0A17.56,17.56,0,0,0,20.65,4.83Zm-1.23-1c0-.07.15-.18.46-.29a19.11,19.11,0,0,1,4.2-.47c.56,0,1.12,0,1.69.07h-.52a22.23,22.23,0,0,0-5.85.78A.29.29,0,0,1,19.42,3.84Zm-1.08.7a2.71,2.71,0,0,0,.93.64l.32.15a22.69,22.69,0,0,0-5.4,3.88c-.25-.11-.49-.21-.71-.32a4.1,4.1,0,0,1-1.44-1A22.47,22.47,0,0,1,18.34,4.54Zm-7.25,4.1a4.3,4.3,0,0,0,1.57,1.1c.21.11.45.21.7.32a26.27,26.27,0,0,0-4.09,5.75l-.93-.42A5.27,5.27,0,0,1,6.42,14,22.86,22.86,0,0,1,11.09,8.64ZM5.73,31.9a5.27,5.27,0,0,1-2-1.39,21.22,21.22,0,0,1-.5-7.15,6.6,6.6,0,0,0,2.07,1.41l1,.47a23.73,23.73,0,0,0,.24,7.06ZM6.55,24c-.36-.15-.69-.31-1-.46A5.52,5.52,0,0,1,3.44,22,21.69,21.69,0,0,1,5.8,15.11a5.76,5.76,0,0,0,2,1.37l1,.43A26.27,26.27,0,0,0,6.55,24Zm.76,1.64a55.59,55.59,0,0,0,6.8,2,39,39,0,0,0-.28,6.92,52.28,52.28,0,0,1-6.31-1.86A24.34,24.34,0,0,1,7.31,25.61Zm.45,8.2a53.4,53.4,0,0,0,6.15,1.8A22.74,22.74,0,0,0,15,41a40.1,40.1,0,0,1-4.88-1.44A18.92,18.92,0,0,1,7.76,33.81Zm7.08,10.54a14.63,14.63,0,0,1-4.07-3.83,41.09,41.09,0,0,0,4.56,1.32,9.66,9.66,0,0,0,2.13,3.3A23,23,0,0,1,14.84,44.35ZM21.91,46c-1.25-.18-2.51-.4-3.64-.65a8.63,8.63,0,0,1-1.94-3.26c1.85.41,3.91.77,6,1.07C22.11,44.39,22,45.36,21.91,46Zm.47-3.61c-2.18-.31-4.36-.7-6.33-1.14a23.55,23.55,0,0,1-.9-5.34c2.46.54,5.2,1,7.92,1.42C22.8,39.26,22.57,41,22.38,42.37Zm4,4.05c-1.18-.06-2.45-.17-3.76-.34a26.78,26.78,0,0,0,.72-2.8c2.13.28,4.19.47,6.15.56A9.17,9.17,0,0,1,26.41,46.42Zm3.44-.06a18.28,18.28,0,0,1-2,.1h-.57a10.42,10.42,0,0,0,3.27-2.56l1.5,0a28.51,28.51,0,0,0,3-.13A15.78,15.78,0,0,1,29.85,46.36ZM36,43a29.42,29.42,0,0,1-3.36.16c-.46,0-.94,0-1.45,0A21.19,21.19,0,0,0,34,38.3l2,0a37.25,37.25,0,0,0,4.11-.2A19.25,19.25,0,0,1,36,43Zm4.6-5.93a37.68,37.68,0,0,1-4.29.21l-1.94,0a35.12,35.12,0,0,0,1.73-6.72c.74,0,1.46,0,2.13,0a40,40,0,0,0,4.58-.23A23.15,23.15,0,0,1,40.59,37.09Zm2.4-8a40.42,40.42,0,0,1-4.61.23l-2.11,0a41.66,41.66,0,0,0,.28-7.4l2,0a37.87,37.87,0,0,0,4.3-.21A26.46,26.46,0,0,1,43,29.09ZM40.93,13.75A4.06,4.06,0,0,0,43,13a22.51,22.51,0,0,1,3,6.43,4.68,4.68,0,0,1-2.6,1A25.36,25.36,0,0,0,40.93,13.75ZM46.7,27.9A5.08,5.08,0,0,1,43.87,29a25.73,25.73,0,0,0-.2-7.38,5.34,5.34,0,0,0,2.66-.95A21.61,21.61,0,0,1,46.7,27.9Z" />
+                                                                        </g>
+                                                                    </svg>
+                                                                    <div>
+                                                                        <p><%= dtMember.Rows[0]["Email"].ToString() %></p>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+                                                                        style="enable-background: new 0 0 512 512;" xml:space="preserve">
+                                                                        <path d="M256,0C161.896,0,85.333,76.563,85.333,170.667c0,28.25,7.063,56.26,20.49,81.104L246.667,506.5
+                                c1.875,3.396,5.448,5.5,9.333,5.5s7.458-2.104,9.333-5.5l140.896-254.813c13.375-24.76,20.438-52.771,20.438-81.021
+                                C426.667,76.563,350.104,0,256,0z M256,256c-47.052,0-85.333-38.281-85.333-85.333c0-47.052,38.281-85.333,85.333-85.333
+                                s85.333,38.281,85.333,85.333C341.333,217.719,303.052,256,256,256z" />
+                                                                    </svg>
+                                                                    <div>
+                                                                        <p><%= dtMember.Rows[0]["Address"].ToString() %></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="dropdown nav-item main-header-notification">
+                                            <a class="new nav-link" href="javascript:void(0);"><i class="fe fe-bell"></i><span class=" pulse"></span></a>
+                                            <div class="dropdown-menu">
+                                                <div class="menu-header-content bg-primary-gradient text-start d-flex">
+                                                    <div class="">
+                                                        <h6 class="menu-header-title text-white mb-0">7 new Notifications</h6>
+                                                    </div>
+                                                    <div class="my-auto ms-auto">
+                                                        <a class="badge bg-pill bg-warning float-end" href="javascript:void(0);">Mark All Read</a>
+                                                    </div>
+                                                </div>
+
+                                                <div class="main-notification-list Notification-scroll">
+                                                    <a class="d-flex p-3 border-bottom" href="javascript:void(0);">
+                                                        <div class="notifyimg bg-success-transparent">
+                                                            <i class="la la-shopping-basket text-success"></i>
+                                                        </div>
+                                                        <div class="ms-3">
+                                                            <h5 class="notification-label mb-1">New Order Received</h5>
+                                                            <div class="notification-subtext">1 hour ago</div>
+                                                        </div>
+                                                        <div class="ms-auto">
+                                                            <i class="las la-angle-right text-end text-muted"></i>
+                                                        </div>
+                                                    </a>
+                                                    <a class="d-flex p-3 border-bottom" href="javascript:void(0);">
+                                                        <div class="notifyimg bg-danger-transparent">
+                                                            <i class="la la-user-check text-danger"></i>
+                                                        </div>
+                                                        <div class="ms-3">
+                                                            <h5 class="notification-label mb-1">22 verified registrations</h5>
+                                                            <div class="notification-subtext">2 hour ago</div>
+                                                        </div>
+                                                        <div class="ms-auto">
+                                                            <i class="las la-angle-right text-end text-muted"></i>
+                                                        </div>
+                                                    </a>
+                                                    <a class="d-flex p-3 border-bottom" href="javascript:void(0);">
+                                                        <div class="notifyimg bg-primary-transparent">
+                                                            <i class="la la-check-circle text-primary"></i>
+                                                        </div>
+                                                        <div class="ms-3">
+                                                            <h5 class="notification-label mb-1">Project has been approved</h5>
+                                                            <div class="notification-subtext">4 hour ago</div>
+                                                        </div>
+                                                        <div class="ms-auto">
+                                                            <i class="las la-angle-right text-end text-muted"></i>
+                                                        </div>
+                                                    </a>
+                                                    <a class="d-flex p-3 border-bottom" href="javascript:void(0);">
+                                                        <div class="notifyimg bg-pink-transparent">
+                                                            <i class="la la-file-alt text-pink"></i>
+                                                        </div>
+                                                        <div class="ms-3">
+                                                            <h5 class="notification-label mb-1">New files available</h5>
+                                                            <div class="notification-subtext">10 hour ago</div>
+                                                        </div>
+                                                        <div class="ms-auto">
+                                                            <i class="las la-angle-right text-end text-muted"></i>
+                                                        </div>
+                                                    </a>
+                                                    <a class="d-flex p-3 border-bottom" href="javascript:void(0);">
+                                                        <div class="notifyimg bg-warning-transparent">
+                                                            <i class="la la-envelope-open text-warning"></i>
+                                                        </div>
+                                                        <div class="ms-3">
+                                                            <h5 class="notification-label mb-1">New review received</h5>
+                                                            <div class="notification-subtext">1 day ago</div>
+                                                        </div>
+                                                        <div class="ms-auto">
+                                                            <i class="las la-angle-right text-end text-muted"></i>
+                                                        </div>
+                                                    </a>
+                                                    <a class="d-flex p-3" href="javascript:void(0);">
+                                                        <div class="notifyimg bg-purple-transparent">
+                                                            <i class="la la-gem text-purple"></i>
+                                                        </div>
+                                                        <div class="ms-3">
+                                                            <h5 class="notification-label mb-1">Updates Available</h5>
+                                                            <div class="notification-subtext">2 days ago</div>
+                                                        </div>
+                                                        <div class="ms-auto">
+                                                            <i class="las la-angle-right text-end text-muted"></i>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="dropdown-footer">
+                                                    <a href="javascript:void(0);">VIEW ALL</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="main-profile-menu">
+                                            <a class="profile-user d-flex" href="faq.aspx">
+                                                <img src="./images/icon/faq.png" alt="user-img" class="rounded-circle mCS_img_loaded"><span></span></a>
+                                        </div>
+
+
+                                        <div class="dropdown main-profile-menu nav nav-item nav-link">
+                                            <a class="profile-user d-flex" href="">
+                                                <img src='<%= "./images/icon/"+(dtMember.Rows[0]["Pic"].ToString()==""?"nonpic.png":dtMember.Rows[0]["Pic"].ToString()) %>' id="imgpic" alt="user-img" class="rounded-circle mCS_img_loaded userpic"><span></span></a>
+
+                                            <div class="dropdown-menu">
+                                                <div class="main-header-profile header-img">
+                                                    <div class="main-img-user">
+                                                        <img alt="" src='<%= "./images/icon/"+(dtMember.Rows[0]["Pic"].ToString()==""?"nonpic.png":dtMember.Rows[0]["Pic"].ToString()) %>'>
+                                                    </div>
+                                                    <h6><%= dtMember.Rows[0]["Name"].ToString() %></h6>
+                                                    <span><%= dtMember.Rows[0]["LoginID"].ToString() %></span>
+                                                </div>
+                                                <a class="dropdown-item" href="profile.aspx"><i class="far fa-user"></i>My Profile</a>
+                                                <a class="dropdown-item" href="profile.aspx"><i class="far fa-edit"></i>Edit Profile</a>
+                                                <a class="dropdown-item" href="ActivityLogs.aspx"><i class="far fa-clock"></i>Activity Logs</a>
+                                                <a class="dropdown-item" href="DeviceInfo.aspx"><i class="far fa-clock"></i>Mobile Logs</a>
+                                                <a class="dropdown-item" href="Settings.aspx"><i class="fe fe-settings"></i>Account Settings</a>
+                                                <a class="dropdown-item" href="GSTDetails.aspx"><i class="fas fa-sliders-h"></i>GSTDetails</a>
+                                                <a class="dropdown-item" href="invoice.aspx"><i class="fas fa-sliders-h"></i>DownLoad Invoice</a>
+                                                <a class="dropdown-item" href="products.aspx"><i class="fas fa-sliders-h"></i>Shopping</a>
+                                                
+                                                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i>
+                                                    <asp:ImageButton runat="server" ID="signout" Width="100" ImageUrl="./images/icon/Logout.png" OnClick="signout_Click" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown main-header-message right-toggle">
+                                            <a class="nav-link pe-0" data-bs-toggle="sidebar-right" data-bs-target=".sidebar-right">
+                                                <i class="ion ion-md-menu tx-20 bg-transparent"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /main-header -->
+
+                <!-- main-sidebar -->
+                <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
+                <div class="sticky">
+                    <aside class="app-sidebar sidebar-scroll">
+                        <div class="main-sidebar-header active">
+                            <a class="desktop-logo logo-light active" href="DashBoard.aspx">
+                                <img src='<%= "./images/Company/"+company.Logo %>' class="main-logo" alt="logo"></a>
+                            <a class="desktop-logo logo-dark active" href="DashBoard.aspx">
+                                <img src='<%= "./images/Company/"+company.Logo %>' class="main-logo" alt="logo"></a>
+                            <a class="logo-icon mobile-logo icon-light active" href="DashBoard.aspx">
+                                <img src='<%= "./images/Company/"+company.Logo %>' alt="logo"></a>
+                            <a class="logo-icon mobile-logo icon-dark active" href="DashBoard.aspx">
+                                <img src='<%= "./images/Company/"+company.Logo %>' alt="logo"></a>
+                        </div>
+                        <div class="main-sidemenu">
+                            <div class="main-sidebar-loggedin">
+                                <div class="app-sidebar__user">
+                                    <div class="dropdown user-pro-body text-center">
+                                        <div class="user-pic">
+                                            <img src='<%= "./images/icon/"+(dtMember.Rows[0]["Pic"].ToString()==""?"nonpic.png":dtMember.Rows[0]["Pic"].ToString()) %>' alt="user-img" class="rounded-circle mCS_img_loaded userpic">
+                                        </div>
+                                        <div class="user-info">
+                                            <h6 class=" mb-0 text-dark"><%= dtMember.Rows[0]["Name"].ToString() %></h6>
+                                            <span class="text-muted app-sidebar__user-name text-sm"><%= dtMember.Rows[0]["RoleName"].ToString()+"("+dtMember.Rows[0]["LoginID"].ToString()+")" %></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sidebar-navs">
+                                <ul class="nav  nav-pills-circle">
+                                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Settings" aria-describedby="tooltip365540">
+                                        <a class="nav-link text-center m-2" style="padding: unset !important; border: 0px solid #e0e0f3 !important; background: none !important;" href="FundRequest.aspx">
+                                            <img src="./images/icon/FundRequest.png" class="" title="Fund Request" />
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="top" title data-bs-original-title="Logout">
+                                        <a class="nav-link text-center m-2" style="padding: unset !important; border: 0px solid #e0e0f3 !important; background: none !important; cursor: pointer" data-bs-effect="effect-newspaper" href="Chart.aspx">
+                                            <img src="./images/icon/chart.png" class="" title="Chart" />
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="top" title data-bs-original-title="Logout">
+                                        <a class="nav-link text-center m-2" style="padding: unset !important; border: 0px solid #e0e0f3 !important; background: none !important; cursor: pointer" data-bs-target="#shutdown" data-bs-toggle="modal">
+                                            <img src="./images/icon/Power.png" class="" title="Fund Request" />
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="top" title data-bs-original-title="Logout">
+                                        <a class="nav-link text-center m-2" style="padding: unset !important; border: 0px solid #e0e0f3 !important; background: none !important; cursor: pointer" data-bs-target="#shutdown" data-bs-toggle="modal">
+                                            <img src="./images/icon/Power.png" class="" title="You Can Down Your Service" />
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="slide-left disabled" id="slide-left">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z" />
+                                </svg>
+                            </div>
+                            <ul class="side-menu ">
+                                <asp:Repeater ID="rptr_main_menu" runat="server" OnItemDataBound="rptr_main_menu_ItemDataBound">
+                                    <ItemTemplate>
+                                        <asp:HiddenField ID="hdn_id" runat="server" Value='<%# Eval("ID") %>' />
+                                        <li class="slide" style='<%# "display:"+(Eval("Link").ToString()=="#"?"none": "") %>'>
+                                            <a class='<%# (Container.ItemIndex+1==1?"side-menu__item active":"side-menu__item") %>' href='<%# Eval("Link") %>'><i class="side-menu__icon fe fe-airplay"></i><span class="side-menu__label"><%# Eval("Name") %></span></a>
+                                        </li>
+                                        <li class="slide" style='<%# "display:"+(Eval("Link").ToString()=="#"?"": "none") %>'>
+                                            <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0);"><i class="side-menu__icon fe fe-box"></i><span class="side-menu__label"><%# Eval("Name") %></span><i class="angle fe fe-chevron-down"></i></a>
+                                            <ul class="slide-menu">
+                                                <li class="side-menu__label1"><a href="javascript:void(0);"><%# Eval("Name") %></a></li>
+                                                <asp:Repeater ID="rptr_sub_menu" runat="server">
+                                                    <ItemTemplate>
+                                                        <li><a class="slide-item" href='<%# Eval("Link") %>'><%# Eval("Name") %></a></li>
+                                                    </ItemTemplate>
+                                                </asp:Repeater>
+                                            </ul>
+                                        </li>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+
+                            </ul>
+
+                            <div class="slide-right" id="slide-right">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+                <!-- main-sidebar -->
+                <div class="main-content app-content">
+                    <div class="main-container container-fluid">
+                        <!-- breadcrumb -->
+                        <div class="breadcrumb-header justify-content-between">
+                            <div>
+                                <h4 class="content-title mb-2">Hi, <%= dtMember.Rows[0]["Name"].ToString() %>!</h4>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="javascript:void(0);">Dashboard</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Home</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                            <div class="d-flex my-auto">
+                                <div class=" d-flex right-page">
+                                    <div class="d-flex justify-content-center me-5">
+                                        <div class="">
+                                            <span class="d-block">
+                                                <span class="label ">Main Wallet</span>
+                                            </span>
+                                            <span class="value"><i class="fas fa-rupee-sign"><%= dtBalance.Rows[0]["BALANCE"] %></i>
+                                            </span>
+                                        </div>
+                                        <div class="ms-3 mt-2">
+                                            <span class="sparkline_bar"></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center me-5">
+                                        <div class="">
+                                            <span class="d-block">
+                                                <span class="label ">AEPS Wallet</span>
+                                            </span>
+                                            <span class="value"><i class="fas fa-rupee-sign"><%= dtBalance.Rows[0]["AEPSBalance"] %></i>
+                                            </span>
+                                        </div>
+                                        <div class="ms-3 mt-2">
+                                            <span class="sparkline_bar"></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="ProfitHistory.aspx">
+                                            <div class="">
+                                                <span class="d-block">
+                                                    <span class="label">PROFIT</span>
+                                                </span>
+                                                <span class="value"><i class="fas fa-rupee-sign"><%= dtBalance.Rows[0]["ProfitBalance"] %></i>
+                                                </span>
+                                            </div>
+                                        </a>
+                                        <div class="ms-3 mt-2">
+                                            <span class="sparkline_bar"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- /breadcrumb -->
+
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                        <asp:HiddenField runat="server" ID="hdnUPIName" ClientIDMode="Static" />
+                        <asp:HiddenField runat="server" ID="hdnUPIIDQ" ClientIDMode="Static" />
+                        <asp:HiddenField runat="server" ID="hdnUPIALL" ClientIDMode="Static" />
+                    </div>
+                </div>
+                <!--Sidebar-right-->
+                <div class="sidebar sidebar-right sidebar-animate">
+                    <div class="panel panel-primary card mb-0">
+                        <div class="panel-body tabs-menu-body p-0 border-0">
+                            <ul class="Date-time">
+                                <li class="time">
+                                    <h1 class="animated ">21:00</h1>
+                                    <p class="animated ">Sat,October 1st 2029</p>
+                                </li>
+                            </ul>
+                            <div class="card-body latest-tasks">
+                                <h3 class="events-title"><span>Events For Week </span></h3>
+                                <div class="event">
+                                    <div class="Day">Monday 20 Jan</div>
+                                    <a href="javascript:void(0);">No Events Today</a>
+                                </div>
+                                <div class="event">
+                                    <div class="Day">Tuesday 21 Jan</div>
+                                    <a href="javascript:void(0);">No Events Today</a>
+                                </div>
+                                <div class="event">
+                                    <div class="Day">Wednessday 22 Jan</div>
+                                    <div class="tasks">
+                                        <div class=" task-line primary">
+                                            <a href="javascript:void(0);" class="label">XML Import &amp; Export
+                                            </a>
+                                            <div class="time">
+                                                12:00 PM
+                                            </div>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label class="check-box">
+                                                <label class="ckbox">
+                                                    <input checked="" type="checkbox"><span></span></label>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="tasks">
+                                        <div class="task-line danger">
+                                            <a href="javascript:void(0);" class="label">Connect API to pages
+                                            </a>
+                                            <div class="time">
+                                                08:00 AM
+                                            </div>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label class="check-box">
+                                                <label class="ckbox">
+                                                    <input type="checkbox"><span></span></label>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="event">
+                                    <div class="Day">Thursday 23 Jan</div>
+                                    <div class="tasks">
+                                        <div class="task-line success">
+                                            <a href="javascript:void(0);" class="label">Create Wireframes
+                                            </a>
+                                            <div class="time">
+                                                06:20 PM
+                                            </div>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label class="check-box">
+                                                <label class="ckbox">
+                                                    <input type="checkbox"><span></span></label>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="event">
+                                    <div class="Day">Friday 24 Jan</div>
+                                    <div class="tasks">
+                                        <div class="task-line warning">
+                                            <a href="javascript:void(0);" class="label">Test new features in tablets
+                                            </a>
+                                            <div class="time">
+                                                02: 00 PM
+                                            </div>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label class="check-box">
+                                                <label class="ckbox">
+                                                    <input type="checkbox"><span></span></label>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="tasks">
+                                        <div class="task-line teal">
+                                            <a href="javascript:void(0);" class="label">Design Evommerce
+                                            </a>
+                                            <div class="time">
+                                                10: 00 PM
+                                            </div>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label class="check-box">
+                                                <label class="ckbox">
+                                                    <input type="checkbox"><span></span></label>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="tasks mb-0">
+                                        <div class="task-line purple">
+                                            <a href="javascript:void(0);" class="label">Fix Validation Issues
+                                            </a>
+                                            <div class="time">
+                                                12: 00 AM
+                                            </div>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label class="check-box">
+                                                <label class="ckbox">
+                                                    <input type="checkbox"><span></span></label>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex pagination wd-100p">
+                                    <a href="javascript:void(0);">Previous</a>
+                                    <a href="javascript:void(0);" class="ms-auto">Next</a>
+                                </div>
+                            </div>
+                            <div class="card-body border-top border-bottom">
+                                <div class="row">
+                                    <div class="col-4 text-center">
+                                        <a class="" href=""><i class="dropdown-icon mdi  mdi-message-outline fs-20 m-0 leading-tight"></i></a>
+                                        <div>Inbox</div>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <a class="" href=""><i class="dropdown-icon mdi mdi-tune fs-20 m-0 leading-tight"></i></a>
+                                        <div>Settings</div>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <a class="" href=""><i class="dropdown-icon mdi mdi-logout-variant fs-20 m-0 leading-tight"></i></a>
+                                        <div>Sign out</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/Sidebar-right-->
+
+                <!-- Footer opened -->
+                <div class="main-footer ht-45">
+                    <div class="container-fluid pd-t-0-f ht-100p">
+                        <span>Copyright © 2024 <a href="javascript:void(0);" class="text-primary"><%= company.Name %></a>. Designed with <span class="fa fa-heart text-danger"></span> by <a href="javascript:void(0);"><%= company.Name %> </a>All rights reserved.</span>
+                    </div>
+                </div>
+                <!-- Footer closed -->
+            </div>
+        </div>
+
+        <div class="modal" id="shutdown" aria-modal="true" role="dialog">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title">System Down</h6>
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <asp:UpdatePanel runat="server" ID="uptd">
+                            <ContentTemplate>
+                                <p>If you shut down your panel, it can stop the All Service, helping you enhance your Security.</p>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Enter OTP</label>
+                                            <asp:TextBox runat="server" ID="txtOTP" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <asp:Button runat="server" ID="btnSendOTP" Text="Send OTP" OnClick="btnSendOTP_Click" CssClass="btn btn-danger"></asp:Button>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <asp:Button runat="server" ID="btnResend" Text="ReSend OTP" OnClick="btnSendOTP_Click" CssClass="btn btn-danger"></asp:Button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade effect-newspaper" id="modaldemo8" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content modal-content-demo">
+                    <div class="modal-header">
+                        <h6 class="modal-title">Modal Header</h6>
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Modal Body</h6>
+                        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn ripple btn-primary" type="button">Save changes</button>
+                        <button class="btn ripple btn-secondary" data-bs-dismiss="modal" type="button">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal upi-modal" aria-modal="true" id="UPIdoc" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ss">Add Funds Using UPI( QR Code )</h5>
+                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="qr-wrapper print">
+                            <div class="qr-heading" style="color: #0176A8; text-align: center;">
+                                <h2><strong><%= dtMember.Rows[0]["Name"] %></strong></h2>
+                            </div>
+                            <!-- /.qr-heading -->
+                            <div class="scan-pay" style="text-align: center;">
+                                <h2>Scan &amp; Pay</h2>
+                            </div>
+                            <div class="qr-code-wrp">
+                                <div class="brand-logo">
+                                    <img src='<%= "./images/Company/"+company.Logo %>' style="width: 100%;" alt="">
+                                </div>
+                                <!-- /.brand-logo -->
+                                <div class="qr-code-img">
+                                    <div class="img-wrap">
+                                        <div class="qr" id="drCodeAll">
+                                        </div>
+                                    </div>
+                                    <!-- /.img-wrap -->
+                                    <span></span>
+                                </div>
+                                <!-- /.brand-logo -->
+                                <div class="partners">
+                                    <ul class="partner-wrap">
+                                        <li>
+                                            <img src="./images/icon/google_pay.png" style="width: 100%;" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="./images/icon/paytm.png" style="width: 100%;" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="./images/icon/amazon_pay.png" style="width: 100%;" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="./images/icon/phone_pay.png" style="width: 100%;" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="./images/icon/upi_pay.png" style="width: 100%;" alt="">
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /.partners -->
+                                <div class="qr-content-wrap">
+                                    <p>
+                                        <strong>Scan this QR Code with any UPI app
+                                       
+                                            <br>
+                                            to make payment to</strong>
+                                    </p>
+                                </div>
+                                <!-- /.qr-content-wrap -->
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--- Back-to-top --->
+    <a href="#top" id="back-to-top"><i class="las la-angle-double-up"></i></a>
+
+    <!--- JQuery min js --->
+    <script src="./assets/plugins/jquery/jquery.min.js"></script>
+
+    <!--- Datepicker js --->
+    <script src="./assets/plugins/jquery-ui/ui/widgets/datepicker.js"></script>
+
+    <!--- Bootstrap Bundle js --->
+    <script src="./assets/plugins/bootstrap/popper.min.js"></script>
+    <script src="./assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <!--- Ionicons js --->
+    <script src="./assets/plugins/ionicons/ionicons.js"></script>
+
+    <!--- Chart bundle min js --->
+    <script src="./assets/plugins/chart.js/Chart.bundle.min.js"></script>
+
+    <!--- JQuery sparkline js --->
+    <script src="./assets/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
+
+    <!--- Internal Sampledata js --->
+    <script src="./assets/js/chart.flot.sampledata.js"></script>
+
+    <!--- Eva-icons js --->
+    <script src="./assets/js/eva-icons.min.js"></script>
+
+    <!--- Moment js --->
+    <script src="./assets/plugins/moment/moment.js"></script>
+
+    <!--- Perfect-scrollbar js --->
+    <script src="./assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="./assets/plugins/perfect-scrollbar/p-scroll.js"></script>
+
+    <!--- Sidebar js --->
+    <script src="./assets/plugins/side-menu/sidemenu.js"></script>
+
+    <!--- sticky js --->
+    <script src="./assets/js/sticky.js"></script>
+
+    <!-- right-sidebar js -->
+    <script src="./assets/plugins/sidebar/sidebar.js"></script>
+    <script src="./assets/plugins/sidebar/sidebar-custom.js"></script>
+
+    <!-- Morris js -->
+    <script src="./assets/plugins/raphael/raphael.min.js"></script>
+    <script src="./assets/plugins/morris.js/morris.min.js"></script>
+
+    <!--- Scripts js --->
+    <script src="./assets/js/script.js"></script>
+
+    <!--- Index js --->
+    <script src="./assets/js/index.js"></script>
+
+    <!--themecolor js-->
+    <script src="./assets/js/themecolor.js"></script>
+
+    <!--swither-styles js-->
+    <script src="./assets/js/swither-styles.js"></script>
+    <script src="./assets/js/modal.js"></script>
+
+    <!--- Custom js --->
+    <script src="./assets/js/custom.js"></script>
+
+    <!-- DATA TABLE JS-->
+    <script src="./assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="./assets/plugins/datatable/js/dataTables.bootstrap5.js"></script>
+    <script src="./assets/plugins/datatable/js/dataTables.buttons.min.js"></script>
+    <script src="./assets/plugins/datatable/js/buttons.bootstrap5.min.js"></script>
+    <script src="./assets/plugins/datatable/js/jszip.min.js"></script>
+    <script src="./assets/plugins/datatable/pdfmake/pdfmake.min.js"></script>
+    <script src="./assets/plugins/datatable/pdfmake/vfs_fonts.js"></script>
+    <script src="./assets/plugins/datatable/js/buttons.html5.min.js"></script>
+    <script src="./assets/plugins/datatable/js/buttons.print.min.js"></script>
+    <script src="./assets/plugins/datatable/js/buttons.colVis.min.js"></script>
+    <script src="./assets/plugins/datatable/dataTables.responsive.min.js"></script>
+    <script src="./assets/plugins/datatable/responsive.bootstrap5.min.js"></script>
+    <script src="./assets/js/table-data.js"></script>
+    <!-- Jquery-steps js -->
+    <script src="./assets/plugins/checkout-jquery-steps/jquery.steps.min.js"></script>
+    <script src="./assets/js/checkout-jquery-steps.js"></script>
+    <script src="./assets/js/handleCounter.js"></script>
+    <script src="./assets/js/tooltip.js"></script>
+
+    
+
+   
+
+    <script>
+        var req = Sys.WebForms.PageRequestManager.getInstance();
+        req.add_beginRequest(function () {
+            try {
+                document.getElementById('load').style.visibility = "visible";
+            } catch (err) {
+
+            }
+        });
+        req.add_endRequest(function () {
+            try {
+                document.getElementById('load').style.visibility = "hidden";
+
+            } catch (err) {
+                document.getElementById('load').style.visibility = "hidden";
+            }
+
+        });
+
+
+        var qrcodeText = null
+        qrcodeText = new QRCode("drCodeAll", {
+            text: $("#hdnUPIALL").val(),
+
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        })
+    </script>
+</body>
+</html>
