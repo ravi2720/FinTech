@@ -196,7 +196,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Custom Middleware for Admin User Seeding
-await AdminSeeder.SeedAdminUserAsync(app.Services);
-
 app.Run();
