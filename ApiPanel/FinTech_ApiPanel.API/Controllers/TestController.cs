@@ -1,4 +1,4 @@
-﻿using FinTech_ApiPanel.API.Middleware;
+﻿using FinTech_ApiPanel.Application.Abstraction.ICryptography;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinTech_ApiPanel.API.Controllers
@@ -7,6 +7,11 @@ namespace FinTech_ApiPanel.API.Controllers
     [ApiController]
     public class TestController : ControllerBase
     {
+        private readonly ICryptoService _cryptoService;
+        public TestController(ICryptoService cryptoService)
+        {
+            _cryptoService = cryptoService;
+        }
         [HttpGet("process")]
         //[ServiceValidate(ServiceType.DMT)]
         //[WhitelistValidate]
@@ -14,8 +19,10 @@ namespace FinTech_ApiPanel.API.Controllers
         public async Task<IActionResult> Test()
         {
 
-            return Ok();
+            var encryptionKey = _cryptoService.Generate32CharKey();
+            var clientId = _cryptoService.GenerateClientId();
+            var clientSecret = _cryptoService.GenerateClientSecret();
+            return Ok(new { clientId, clientSecret, encryptionKey });
         }
-
     }
 }

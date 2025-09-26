@@ -171,7 +171,6 @@ namespace FinTech_ApiPanel.Application.Handlers.UserMasters
             }
         }
 
-
         async Task CreateWallet(long userId)
         {
             try
