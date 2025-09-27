@@ -1,0 +1,6 @@
+﻿CREATE TABLE ServiceMasters (
+    Id BIGINT PRIMARY KEY IDENTITY(1,1),
+    Title NVARCHAR(255) NOT NULL,
+    Type TINYINT NOT NULL,
+    IsActive BIT NOT NULL
+);

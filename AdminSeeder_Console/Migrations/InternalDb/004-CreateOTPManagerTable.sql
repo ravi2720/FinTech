@@ -1,0 +1,11 @@
+﻿CREATE TABLE OTPManagers (
+    Id BIGINT PRIMARY KEY IDENTITY(1,1),
+    Type TINYINT NOT NULL,
+    Email NVARCHAR(255) NULL,
+    PhoneNumber VARCHAR(10) NULL,
+    Token NVARCHAR(255) NULL,
+    TokenValidTill DATETIME NULL,
+    Otp BIGINT NOT NULL,
+    OtpValidTill DATETIME NOT NULL,
+    IsOtpVerified BIT NOT NULL
+);
