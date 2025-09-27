@@ -37,7 +37,7 @@ builder.Services.AddAutoMapper(typeof(CreateUserHandler).Assembly);
 // Bind PanelSettings using the Options pattern
 builder.Configuration.AddInMemoryCollection(new Dictionary<string, string>
 {
-    { "PanelSettings:IsMasterPanel", "true" }
+    { "PanelSettings:IsMasterPanel", "false" }
 });
 
 var isMasterPanel = builder.Configuration.GetValue<bool>("PanelSettings:IsMasterPanel");
